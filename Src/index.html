@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Languify</title>
+    <style>
+        @font-face {
+            font-family: "SF-Regular";
+            src: url("../Assets/Fonts/SF-Regular.otf");
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'SF-Regular';
+            line-height: 1.6;
+            color: #333;
+        }
+        nav {
+            position: fixed;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+        }
+        nav h1 {
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+        nav a {
+            text-decoration: none;
+            color: #2c3e50;
+            margin-left: 30px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        nav a:hover {
+            color: #3498db;
+            transform: translateY(-3px);
+            display: inline-block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        section {
+            padding: 100px 0;
+            background-color: #fff;
+        }
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        .journeyCards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .journeyCard {
+            width: 250px;
+            height: 250px;
+            position: relative;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transform: translateY(calc(30px * var(--offset)));
+            text-align: left;
+        }
+        .journeyNums {
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            width: 80px;
+            height: 80px;
+            background: #2ecc71;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+        .journeyCard h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        .teacherContainer {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .teacherCards {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .teacherCard {
+            flex: 0 0 calc(33.333% - 20px);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 10px;
+            min-width: calc(33.333% - 20px);
+        }
+        .teacher-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        .teacherInfo {
+            width: 100%;
+        }
+        .teacherInfo h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        .teacherInfo p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .specialty {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .specialty img {
+            width: 24px;
+            height: 24px;
+        }
+        .arrowBtn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 2;
+            display: none;
+        }
+        .arrowBtn.visible {
+            display: block;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+
+        .mainSection {
+            background-image: url('background.png');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            color: white;
+        }
+        .mainTitle {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .mainSubtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        .ctaButton {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .ctaButton:hover {
+            background-color: #0056b3;
+        }
+
+        .priceCards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .priceCard {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 20px;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .priceCard h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        .price {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        #bestSeller {
+            border: 2px solid #3498db;
+            transform: scale(1.05);
+        }
+        #bestSellerTag {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer {
+              background-color: #1a1a1a;
+              color: white;
+              padding: 40px 0;
+          }
+
+          .footerContent {
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 40px;
+          }
+
+          .footerColumn {
+              flex: 1;
+              margin-right: 40px;
+          }
+        
+          .footerColumn:last-child {
+              margin-right: 0;
+          }
+        
+          .footerColumn h3 {
+              color: #fff;
+              margin-bottom: 20px;
+          }
+        
+          .footerColumn p {
+              margin-bottom: 10px;
+              color: #ccc;
+          }
+
+          .footerBottom {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              padding-top: 20px;
+              border-top: 1px solid #333;
+          }
+        
+          .footerSocials a {
+              color: white;
+              margin-left: 20px;
+              text-decoration: none;
+              font-size: 20px;
+          }
+        
+          .footerSocials a:hover {
+              color: #007bff;
+              transition: color 0.3s ease;
+          }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>Languify</h1>
+        <div>
+            <a href="#teacherSection">Mokytojai</a>
+            <a href="#priceSection">Kainos</a>
+            <a href="#courseSection">Kursai</a>
+            <a href="#faqSection">DUK</a>
+        </div>
+    </nav>
+    
+    <section class="mainSection">
+        <h1 class="mainTitle">Mokykis kalbų su profesionalais</h1>
+        <p class="mainSubtitle">Atrask naujus horizontus su Languify</p>
+        <button class="ctaButton">Pradėti mokytis</button>
+    </section>
+    
+
+    <section id="teacherSection">
+        <div class="container">
+            <h2>Mūsų Mokytojai</h2>
+            <div class="teacherContainer">
+                <button class="arrowBtn prev">←</button>
+                <button class="arrowBtn next">→</button>
+                <div class="teacherCards">
+                    <div class="teacherCard">
+                        <img src="https://via.placeholder.com/120" alt="Jonas Jonaitis" class="teacher-image">
+                        <div class="teacherInfo">
+                            <h3>Jonas Jonaitis</h3>
+                            <p>Anglų kalbos mokytojas</p>
+                            <p>10+ metų patirtis • Cambridge sertifikuotas</p>
+                            <p class="specialty">
+                                <span>Specializacija: verslo anglų kalba</span>
+                                <img src="english.png" alt="English">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="teacherCard">
+                        <img src="https://via.placeholder.com/120" alt="Petras Petraitis" class="teacher-image">
+                        <div class="teacherInfo">
+                            <h3>Petras Petraitis</h3>
+                            <p>Vokiečių kalbos mokytojas</p>
+                            <p>8+ metų patirtis • Goethe instituto absolventas</p>
+                            <p class="specialty">
+                                <span>Specializacija: techninė vokiečių kalba</span>
+                                <img src="germany.png" alt="German">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="teacherCard">
+                        <img src="https://via.placeholder.com/120" alt="Ona Onaitė" class="teacher-image">
+                        <div class="teacherInfo">
+                            <h3>Ona Onaitė</h3>
+                            <p>Ispanų kalbos mokytoja</p>
+                            <p>12+ metų patirtis • DELE egzaminatorė</p>
+                            <p class="specialty">
+                                <span>Specializacija: konversacinė ispanų kalba</span>
+                                <img src="spain.png" alt="Spanish">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="teacherCard">
+                        <img src="https://via.placeholder.com/120" alt="Laura Lauraitė" class="teacher-image">
+                        <div class="teacherInfo">
+                            <h3>Laura Lauraitė</h3>
+                            <p>Anglų kalbos mokytoja</p>
+                            <p>7+ metų patirtis • IELTS egzaminatorė</p>
+                            <p class="specialty">
+                                <span>Specializacija: akademinė anglų kalba</span>
+                                <img src="english.png" alt="English">
+                            </p>
+                        </div>
+                    </div>
+                    <div class="teacherCard">
+                        <img src="https://via.placeholder.com/120" alt="Marius Mariukas" class="teacher-image">
+                        <div class="teacherInfo">
+                            <h3>Marius Mariukas</h3>
+                            <p>Vokiečių kalbos mokytojas</p>
+                            <p>15+ metų patirtis • TestDaF specialistas</p>
+                            <p class="specialty">
+                                <span>Specializacija: akademinė vokiečių kalba</span>
+                                <img src="germany.png" alt="German">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="priceSection" style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2>Kainos</h2>
+            <div class="priceCards">
+                <div class="priceCard">
+                    <h3>Pradedančiųjų kursas</h3>
+                    <div class="price">30€</div>
+                    <p>per mėnesį</p>
+                    <ul style="list-style: none; margin: 20px 0;">
+                        <li>✓ 8 pamokos per mėnesį</li>
+                        <li>✓ Mokomoji medžiaga</li>
+                        <li>✓ Pradedančiųjų grupė</li>
+                    </ul>
+                </div>
+                <div class="priceCard">
+                    <h3>Vidutinis lygis</h3>
+                    <div class="price">40€</div>
+                    <p>per mėnesį</p>
+                    <ul style="list-style: none; margin: 20px 0;">
+                        <li>✓ 12 pamokų per mėnesį</li>
+                        <li>✓ Papildoma praktika</li>
+                        <li>✓ Video medžiaga</li>
+                    </ul>
+                </div>
+                <div class="priceCard" id="bestSeller">
+                    <div id="bestSellerTag">
+                        Populiariausias
+                    </div>
+                    <h3>Pažengusiųjų kursas</h3>
+                    <div class="price">50€</div>
+                    <p>per mėnesį</p>
+                    <ul style="list-style: none; margin: 20px 0;">
+                        <li>✓ 16 pamokų per mėnesį</li>
+                        <li>✓ Individualus planas</li>
+                        <li>✓ Egzaminų paruošimas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="courseSection" style="height: 950px;">
+        <div class="container">
+            <h2>Jūsų Mokymosi Kelionė</h2>
+            <div class="journeyCards">
+                <div class="journeyCard" style="--offset: 0">
+                    <div class="journeyNums">1</div>
+                    <h3>Pradžia</h3>
+                    <p>Nemokama konsultacija ir kalbos lygio nustatymas</p>
+                </div>
+                <div class="journeyCard" style="--offset: 1">
+                    <div class="journeyNums">2</div>
+                    <h3>Pagrindai</h3>
+                    <p>Bazinės gramatikos ir žodyno formavimas</p>
+                </div>
+                <div class="journeyCard" style="--offset: 2">
+                    <div class="journeyNums">3</div>
+                    <h3>Praktika</h3>
+                    <p>Aktyvus kalbėjimas ir situacijų modeliavimas</p>
+                </div>
+                <div class="journeyCard" style="--offset: 3">
+                    <div class="journeyNums">4</div>
+                    <h3>Įgūdžių Tobulinimas</h3>
+                    <p>Specializuotos temos ir sudėtingesnės užduotys</p>
+                </div>
+                <div class="journeyCard" style="--offset: 4">
+                    <div class="journeyNums">5</div>
+                    <h3>Pažengęs Lygis</h3>
+                    <p>Laisvas bendravimas ir kultūros pažinimas</p>
+                </div>
+                <div class="journeyCard" style="--offset: 5">
+                    <div class="journeyNums">6</div>
+                    <h3>Meistriškumas</h3>
+                    <p>Profesionalus kalbos vartojimas ir sertifikavimas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        #faqSection {
+            padding: 20px 0;
+            height: 40vh;
+        }
+        .faqItem {
+            background: white;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+        .faqItem h3 {
+            padding: 15px;
+            margin: 0;
+            font-size: 1.1rem;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faqItem h3::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background-image: url('arrow_right.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .faqItem.active h3::after {
+            background-image: url('arrow_down.png');
+        }
+        .faqItem p {
+            margin: 0;
+            padding: 0 15px 15px;
+            color: #666;
+            display: none;
+        }
+        .faqItem.active p {
+            display: block;
+        }
+    </style>
+
+    <section id="faqSection" style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2>Dažniausiai Užduodami Klausimai</h2>
+            <div id="faqQuestions">
+                <div class="faqItem">
+                    <h3>Kaip vyksta pamokos?</h3>
+                    <p>Pamokos vyksta ir nuotoliniu būdu ir klasėje dėl jūsų patogumų.</p>
+                </div>
+                <div class="faqItem">
+                    <h3>Kiek trunka viena pamoka?</h3>
+                    <p>Viena pamoka trunka 45 minutes. Šis laikas subalansuotas efektyviam mokymuisi.</p>
+                </div>
+                <div class="faqItem">
+                    <h3>Kokių kalbų mokote?</h3>
+                    <p>Mes mokome anglų, rusų, ispanų, prancūzų, japonų kalbas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.faqItem').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Close all other items
+                document.querySelectorAll('.faqItem').forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+    </script>      <section class="footer">
+          <div class="container">
+              <div class="footerContent">
+                  <div class="footerColumn">
+                      <h3>Kontaktai</h3>
+                      <p>Email: info@kalbuakademija.lt</p>
+                      <p>Tel: +370 600 00000</p>
+                      <p>Darbo laikas: I-V 9:00-18:00</p>
+                  </div>
+                  <div class="footerColumn">
+                      <h3>Lokacijos</h3>
+                      <p>Vilnius: Gedimino pr. 1</p>
+                      <p>Kaunas: Laisvės al. 1</p>
+                      <p>Klaipėda: H. Manto g. 1</p>
+                  </div>
+              </div>
+              <div class="footerBottom">
+                  <div class="copyright">
+                      <p>© 2024 Kalbų Akademija. Visos teisės saugomos.</p>
+                  </div>
+                  <div class="footerSocials">
+                      <a href="#">
+                          <i class="fab fa-facebook"></i>
+                      </a>
+                      <a href="#">
+                          <i class="fab fa-instagram"></i>
+                      </a>
+                      <a href="#">
+                          <i class="fab fa-linkedin"></i>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </section>
+    <script>
+        // Add Font Awesome for social media icons
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
+        document.head.appendChild(link);
+    </script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.teacherCards');
+            const cards = document.querySelectorAll('.teacherCard');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            let currentIndex = 1;
+
+            function updateSlider() {
+                const cardWidth = cards[0].offsetWidth + 20;
+                container.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+                
+                // Update button visibility
+                prevBtn.classList.toggle('visible', currentIndex > 0);
+                nextBtn.classList.toggle('visible', currentIndex < cards.length - 3);
+            }
+
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateSlider();
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < cards.length - 3) {
+                    currentIndex++;
+                    updateSlider();
+                }
+            });
+
+            // Initial update
+            updateSlider();
+
+            // Update on window resize
+            window.addEventListener('resize', updateSlider);
+        });
+    </script>
+</body>
+</html>
