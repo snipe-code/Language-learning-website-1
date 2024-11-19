@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Languify</title>
+    <title>Brainlang</title>
     <style>
         @font-face {
             font-family: "SF-Regular";
@@ -105,57 +105,6 @@
             color: #2c3e50;
             margin-bottom: 15px;
             font-size: 1.3rem;
-        }
-        .teacherContainer {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-        .teacherCards {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        .teacherCard {
-            flex: 0 0 calc(33.333% - 20px);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin: 10px;
-            min-width: calc(33.333% - 20px);
-        }
-        .teacher-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: 15px;
-        }
-        .teacherInfo {
-            width: 100%;
-        }
-        .teacherInfo h3 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 1.4rem;
-        }
-        .teacherInfo p {
-            margin: 5px 0;
-            color: #666;
-        }
-        .specialty {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        .specialty img {
-            width: 24px;
-            height: 24px;
         }
         .arrowBtn {
             position: absolute;
@@ -328,79 +277,133 @@
         <button class="ctaButton">Pradėti mokytis</button>
     </section>
     
+    <style>
+        .teacherContainer {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .teacherCards {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .teacherCard {
+            flex: 0 0 calc(33.333% - 20px);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 10px;
+            min-width: calc(33.333% - 20px);
+        }
+        .teacher-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        .teacherInfo {
+            width: 100%;
+        }
+        .teacherInfo h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        .teacherInfo p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .specialty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .specialty img {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
 
     <section id="teacherSection">
         <div class="container">
             <h2>Mūsų Mokytojai</h2>
             <div class="teacherContainer">
-                <button class="arrowBtn prev">←</button>
-                <button class="arrowBtn next">→</button>
+                <button class="arrowBtn prev"><</button>
+                <button class="arrowBtn next">></button>
                 <div class="teacherCards">
                     <div class="teacherCard">
-                        <img src="https://via.placeholder.com/120" alt="Jonas Jonaitis" class="teacher-image">
+                        <img src="../Assets/Photographic/Stock-images/teacher-jonas.jpg" alt="Jonas Jonaitis" class="teacher-image">
                         <div class="teacherInfo">
                             <h3>Jonas Jonaitis</h3>
-                            <p>Anglų kalbos mokytojas</p>
+                            <p>Japonų kalbos mokytojas</p>
                             <p>10+ metų patirtis • Cambridge sertifikuotas</p>
                             <p class="specialty">
-                                <span>Specializacija: verslo anglų kalba</span>
-                                <img src="english.png" alt="English">
+                                <span>Specializacija: akademinė japonų kalba</span>
+                                <img src="../Assets/Photographic/Icons/japan-flag.svg" alt="English">
                             </p>
                         </div>
                     </div>
                     <div class="teacherCard">
-                        <img src="https://via.placeholder.com/120" alt="Petras Petraitis" class="teacher-image">
+                        <img src="../Assets/Photographic/Stock-images/teacher-petras.avif" alt="Petras Petraitis" class="teacher-image">
                         <div class="teacherInfo">
                             <h3>Petras Petraitis</h3>
-                            <p>Vokiečių kalbos mokytojas</p>
+                            <p>Prancūzų kalbos mokytojas</p>
                             <p>8+ metų patirtis • Goethe instituto absolventas</p>
                             <p class="specialty">
-                                <span>Specializacija: techninė vokiečių kalba</span>
-                                <img src="germany.png" alt="German">
+                                <span>Specializacija: techninė prancūzų kalba</span>
+                                <img src="../Assets/Photographic/Icons/france-flag.svg" alt="German">
                             </p>
                         </div>
                     </div>
                     <div class="teacherCard">
-                        <img src="https://via.placeholder.com/120" alt="Ona Onaitė" class="teacher-image">
+                        <img src="../Assets/Photographic/Stock-images/teacher-ona.jpeg" alt="Ona Onaitė" class="teacher-image">
                         <div class="teacherInfo">
                             <h3>Ona Onaitė</h3>
                             <p>Ispanų kalbos mokytoja</p>
                             <p>12+ metų patirtis • DELE egzaminatorė</p>
                             <p class="specialty">
                                 <span>Specializacija: konversacinė ispanų kalba</span>
-                                <img src="spain.png" alt="Spanish">
+                                <img src="../Assets/Photographic/Icons/spain-flag.svg" alt="Ispanijos vėliava">
                             </p>
                         </div>
                     </div>
                     <div class="teacherCard">
-                        <img src="https://via.placeholder.com/120" alt="Laura Lauraitė" class="teacher-image">
+                        <img src="../Assets/Photographic/Stock-images/teacher-laura.JPG" alt="Laura Lauraitė" class="teacher-image">
                         <div class="teacherInfo">
                             <h3>Laura Lauraitė</h3>
                             <p>Anglų kalbos mokytoja</p>
                             <p>7+ metų patirtis • IELTS egzaminatorė</p>
                             <p class="specialty">
                                 <span>Specializacija: akademinė anglų kalba</span>
-                                <img src="english.png" alt="English">
+                                <img src="../Assets/Photographic/Icons/england-flag.svg" alt="Anglijos vėliava">
                             </p>
                         </div>
                     </div>
                     <div class="teacherCard">
-                        <img src="https://via.placeholder.com/120" alt="Marius Mariukas" class="teacher-image">
+                        <img src="../Assets/Photographic/Stock-images/teacher-marius.webp" alt="Marius Mariukas" class="teacher-image">
                         <div class="teacherInfo">
                             <h3>Marius Mariukas</h3>
-                            <p>Vokiečių kalbos mokytojas</p>
+                            <p>Rusų kalbos mokytojas</p>
                             <p>15+ metų patirtis • TestDaF specialistas</p>
                             <p class="specialty">
                                 <span>Specializacija: akademinė vokiečių kalba</span>
-                                <img src="germany.png" alt="German">
+                                <img src="../Assets/Photographic/Icons/russia-flag.svg" alt="Rusijos vėliava">
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <section id="priceSection" style="background-color: #f8f9fa;">
+    </section>    <section id="priceSection" style="background-color: #f8f9fa;">
         <div class="container">
             <h2>Kainos</h2>
             <div class="priceCards">
@@ -414,7 +417,10 @@
                         <li>✓ Pradedančiųjų grupė</li>
                     </ul>
                 </div>
-                <div class="priceCard">
+                <div class="priceCard" id="bestSeller">
+                    <div id="bestSellerTag">
+                        Populiariausias
+                    </div>
                     <h3>Vidutinis lygis</h3>
                     <div class="price">40€</div>
                     <p>per mėnesį</p>
@@ -424,10 +430,7 @@
                         <li>✓ Video medžiaga</li>
                     </ul>
                 </div>
-                <div class="priceCard" id="bestSeller">
-                    <div id="bestSellerTag">
-                        Populiariausias
-                    </div>
+                <div class="priceCard">
                     <h3>Pažengusiųjų kursas</h3>
                     <div class="price">50€</div>
                     <p>per mėnesį</p>
@@ -449,37 +452,232 @@
                 <div class="journeyCard" style="--offset: 0">
                     <div class="journeyNums">1</div>
                     <h3>Pradžia</h3>
-                    <p>Nemokama konsultacija ir kalbos lygio nustatymas</p>
+                    <p>Nemokama konsultacija ir kalbos lygio nustatymas.</p>
                 </div>
                 <div class="journeyCard" style="--offset: 1">
                     <div class="journeyNums">2</div>
                     <h3>Pagrindai</h3>
-                    <p>Bazinės gramatikos ir žodyno formavimas</p>
+                    <p>Bazinės gramatikos ir žodyno formavimas.</p>
                 </div>
                 <div class="journeyCard" style="--offset: 2">
                     <div class="journeyNums">3</div>
-                    <h3>Praktika</h3>
-                    <p>Aktyvus kalbėjimas ir situacijų modeliavimas</p>
+                    <h3>Tarimas ir kirčiavimas</h3>
+                    <p>Teisingo tarimo, kirčiavimo formavimas, įpročiai.</p>
                 </div>
                 <div class="journeyCard" style="--offset: 3">
                     <div class="journeyNums">4</div>
-                    <h3>Įgūdžių Tobulinimas</h3>
-                    <p>Specializuotos temos ir sudėtingesnės užduotys</p>
+                    <h3>Įgūdžių tobulinimas, patarimai</h3>
+                    <p>Specializuotos temos ir sudėtingesnės užduotys.</p>
                 </div>
                 <div class="journeyCard" style="--offset: 4">
                     <div class="journeyNums">5</div>
                     <h3>Pažengęs Lygis</h3>
-                    <p>Laisvas bendravimas ir kultūros pažinimas</p>
+                    <p>Laisvas bendravimas ir kultūros pažinimas.</p>
                 </div>
                 <div class="journeyCard" style="--offset: 5">
                     <div class="journeyNums">6</div>
                     <h3>Meistriškumas</h3>
-                    <p>Profesionalus kalbos vartojimas ir sertifikavimas</p>
+                    <p>Profesionalus kalbos vartojimas, iškalbumas.</p>
                 </div>
             </div>
         </div>
     </section>
+      <style>
+              #successSection {
+                  padding: 80px 0;
+                  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+                  min-height: 600px;
+              }
 
+              .successGrid {
+                  display: grid;
+                  grid-template-columns: repeat(3, 1fr);
+                  gap: 30px;
+                  margin-top: 40px;
+              }
+
+              .successStory {
+                  background: white;
+                  border-radius: 15px;
+                  padding: 25px;
+                  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                  transition: transform 0.3s ease;
+                  min-height: 350px;
+              }
+
+
+              .successStory:hover {
+                  transform: scale(1.05);
+              }
+
+              .studentInfo {
+                  display: flex;
+                  align-items: center;
+                  margin-bottom: 20px;
+              }
+              .studentAvatar {
+                  width: 60px;
+                  height: 60px;
+                  border-radius: 50%;
+                  overflow: hidden;
+              }
+              .studentAvatar img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+              }
+
+              .achievementStats {
+                  display: flex;
+                  justify-content: space-between;
+                  margin-top: 20px;
+                  padding-top: 20px;
+                  border-top: 1px solid #dee2e6;
+              }
+              .stat {
+                  text-align: center;
+              }
+
+              .statNumber {
+                  font-size: 1.5rem;
+                  font-weight: bold;
+                  color: #0056b3;
+              }
+
+              .statLabel {
+                  font-size: 0.9rem;
+                  color: #6c757d;
+              }
+          </style>
+    
+          <section id="successSection">
+              <div class="container">
+                  <h2>Sėkmės Istorijos</h2>
+
+
+
+                  <div class="successGrid">
+                      <div class="successStory">
+                          <div class="studentInfo">
+                              <div class="studentAvatar">
+                                  <img src="https://via.placeholder.com/60" alt="Laura M.">
+                              </div>
+                              <div>
+                                  <h3>Laura M.</h3>
+                                  <p>B2 → C1 per 6 mėnesius</p>
+                              </div>
+                          </div>
+                          <p>"Dėka intensyvių pamokų ir puikaus mokytojo, pasiekiau savo tikslą greičiau nei tikėjausi. Dabar laisvai kalbu verslo aplinkoje!"</p>
+
+                          <div class="achievementStats">
+                              <div class="stat">
+
+
+                                  <div class="statNumber">96</div>
+                                  <div class="statLabel">Pamokos</div>
+                              </div>
+                              <div class="stat">
+
+
+                                  <div class="statNumber">2500+</div>
+                                  <div class="statLabel">Žodžiai</div>
+                              </div>
+                              <div class="stat">
+
+
+                                  <div class="statNumber">C1</div>
+                                  <div class="statLabel">Lygis</div>
+                              </div>
+                          </div>
+                      </div>
+
+
+                      <div class="successStory">
+                          <div class="studentInfo">
+                              <div class="studentAvatar">
+                                  <img src="https://via.placeholder.com/60" alt="Tomas K.">
+                              </div>
+                              <div>
+                                  <h3>Tomas K.</h3>
+                                  <p>A1 → B1 per 8 mėnesius</p>
+                              </div>
+                          </div>
+                          <p>"Pradėjau nuo nulio, bet su sistemingu mokymusi ir praktika pasiekiau rezultatų, kuriais didžiuojuosi. Dabar galiu laisvai bendrauti kasdienėse situacijose."</p>
+
+                          <div class="achievementStats">
+                              <div class="stat">
+
+
+                                  <div class="statNumber">128</div>
+                                  <div class="statLabel">Pamokos</div>
+                              </div>
+                              <div class="stat">
+
+
+                                  <div class="statNumber">1800+</div>
+                                  <div class="statLabel">Žodžiai</div>
+                              </div>
+                              <div class="stat">
+
+
+                                  <div class="statNumber">B1</div>
+                                  <div class="statLabel">Lygis</div>
+                              </div>
+                          </div>
+                      </div>
+
+
+                      <div class="successStory">
+                          <div class="studentInfo">
+                              <div class="studentAvatar">
+                                  <img src="https://via.placeholder.com/60" alt="Ieva P.">
+                              </div>
+                              <div>
+                                  <h3>Ieva P.</h3>
+                                  <p>B1 → C1 per 12 mėnesių</p>
+                              </div>
+                          </div>
+                          <p>"Nuoseklus darbas ir profesionalus mokytojas padėjo man pasiekti aukščiausią kalbos lygį. Dabar galiu laisvai skaityti literatūrą originalo kalba!"</p>
+
+                          <div class="achievementStats">
+                              <div class="stat">
+
+
+                                  <div class="statNumber">192</div>
+                                  <div class="statLabel">Pamokos</div>
+                              </div>
+                              <div class="stat">
+
+
+                                  <div class="statNumber">3000+</div>
+                                  <div class="statLabel">Žodžiai</div>
+                              </div>
+                              <div class="stat">
+
+
+                                  <div class="statNumber">C1</div>
+                                  <div class="statLabel">Lygis</div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </section>
+    
+          <script>
+
+              document.querySelectorAll('.successStory').forEach(story => {
+                  story.addEventListener('mouseenter', () => {
+
+                      story.style.transform = 'scale(1.05)';
+                  });
+                  story.addEventListener('mouseleave', () => {
+
+                      story.style.transform = 'scale(1)';
+                  });
+              });
+
+          </script>
     <style>
         #faqSection {
             padding: 20px 0;
@@ -556,7 +754,32 @@
                 item.classList.toggle('active');
             });
         });
-    </script>      <section class="footer">
+    </script>
+    <style>
+        .faqItem h3::after {
+            content: '';
+            width: 24px;
+            height: 24px;
+            background-image: url('../Assets/Photographic/Icons/arrow_right.svg');
+            background-color: #e9ecef;
+            background-size: 16px;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: inline-block;
+            border-radius: 50%;
+        }
+        .faqItem.active h3::after {
+            background-image: url('../Assets/Photographic/Icons/arrow_down.svg');
+        }
+        .faqItem h3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin: 0;
+        }
+    </style>
+    <section class="footer">
           <div class="container">
               <div class="footerContent">
                   <div class="footerColumn">
@@ -590,16 +813,7 @@
               </div>
           </div>
       </section>
-    <script>
-        // Add Font Awesome for social media icons
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
-        document.head.appendChild(link);
-    </script>
-
-    <script>
-
+      <script>
         document.addEventListener('DOMContentLoaded', function() {
             const container = document.querySelector('.teacherCards');
             const cards = document.querySelectorAll('.teacherCard');
@@ -611,7 +825,6 @@
                 const cardWidth = cards[0].offsetWidth + 20;
                 container.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
                 
-                // Update button visibility
                 prevBtn.classList.toggle('visible', currentIndex > 0);
                 nextBtn.classList.toggle('visible', currentIndex < cards.length - 3);
             }
@@ -630,10 +843,8 @@
                 }
             });
 
-            // Initial update
             updateSlider();
 
-            // Update on window resize
             window.addEventListener('resize', updateSlider);
         });
     </script>
