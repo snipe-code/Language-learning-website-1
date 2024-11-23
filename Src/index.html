@@ -109,15 +109,17 @@
         .arrowBtn {
             position: absolute;
             top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
-            color: white;
+            transform: translateY(-80%);
+            background: rgba(0, 0, 0, 0.116);
             border: none;
             padding: 15px;
             cursor: pointer;
             border-radius: 50%;
+            height: 50px;
+            width: 50px;
             z-index: 2;
             display: none;
+            margin: 0 15px;
         }
         .arrowBtn.visible {
             display: block;
@@ -127,6 +129,73 @@
         }
         .next {
             right: 10px;
+        }
+
+        #successSection {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 600px;
+        }
+
+        .successGrid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .successStory {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            min-height: 350px;
+        }
+
+
+        .successStory:hover {
+            transform: scale(1.05);
+        }
+
+        .studentInfo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .studentAvatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .studentAvatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .achievementStats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #dee2e6;
+            align-items: flex-end;
+        }
+        .stat {
+            text-align: center;
+        }
+
+        .statNumber {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0056b3;
+        }
+
+        .statLabel {
+            font-size: 0.9rem;
+            color: #6c757d;
         }
 
         .mainSection {
@@ -207,57 +276,213 @@
             display: flex;
             align-items: center;
         }
+        #faqSection {
+            padding: 20px 0;
+            height: 40vh;
+        }
+        .faqItem {
+            background: white;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+        .faqItem h3 {
+            padding: 15px;
+            margin: 0;
+            font-size: 1.1rem;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .faqItem h3::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background-image: url('arrow_right.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .faqItem.active h3::after {
+            background-image: url('arrow_down.png');
+        }
+        .faqItem p {
+            margin: 0;
+            padding: 0 15px 15px;
+            color: #666;
+            display: none;
+        }
+        .faqItem.active p {
+            display: block;
+        }
+
+        .faqItem h3::after {
+            content: '';
+            width: 24px;
+            height: 24px;
+            background-image: url('../Assets/Photographic/Icons/arrow_right.svg');
+            background-color: #e9ecef;
+            background-size: 16px;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: inline-block;
+            border-radius: 50%;
+        }
+        .faqItem.active h3::after {
+            background-image: url('../Assets/Photographic/Icons/arrow_down.svg');
+        }
+        .faqItem h3 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            margin: 0;
+        }
 
         .footer {
-              background-color: #1a1a1a;
-              color: white;
-              padding: 40px 0;
-          }
+            background-color: #1a1a1a;
+            color: white;
+            padding: 40px 0;
+        }
 
-          .footerContent {
-              display: flex;
-              justify-content: space-between;
-              margin-bottom: 40px;
-          }
+        .footerContent {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
 
-          .footerColumn {
-              flex: 1;
-              margin-right: 40px;
-          }
+        .footerColumn {
+            flex: 1;
+            margin-right: 40px;
+        }
         
-          .footerColumn:last-child {
-              margin-right: 0;
-          }
+        .footerColumn:last-child {
+            margin-right: 0;
+        }
         
-          .footerColumn h3 {
-              color: #fff;
-              margin-bottom: 20px;
-          }
+        .footerColumn h3 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
         
-          .footerColumn p {
+        .footerColumn p {
               margin-bottom: 10px;
               color: #ccc;
-          }
+        }
 
-          .footerBottom {
+        .footerBottom {
               display: flex;
               justify-content: space-between;
               align-items: center;
               padding-top: 20px;
               border-top: 1px solid #333;
-          }
+        }
         
-          .footerSocials a {
+        .footerSocials a {
               color: white;
               margin-left: 20px;
               text-decoration: none;
               font-size: 20px;
           }
         
-          .footerSocials a:hover {
+        .footerSocials a:hover {
               color: #007bff;
               transition: color 0.3s ease;
           }
+
+        .teacherContainer {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .teacherCards {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .teacherCard {
+            flex: 0 0 calc(33.333% - 20px);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 10px;
+            min-width: calc(33.333% - 20px);
+        }
+
+        .teacherImg {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .teacherInfo {
+            width: 100%;
+        }
+
+        .teacherInfo h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+        .teacherInfo p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .specialty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .specialty img {
+            width: 40px;
+            height: 40px;
+        }
+        #businessSuccess {
+            background-color: #ffffff;
+            padding: 40px 0;
+        }
+        .successContainer {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .successItem {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+        }
+        .successIcon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+        }
+        .successNum {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #007bff;
+            margin: 10px 0;
+        }
+        .successLabel {
+            color: #666;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
@@ -276,72 +501,20 @@
         <p class="mainSubtitle">Atrask naujus horizontus su Languify</p>
         <button class="ctaButton">Pradėti mokytis</button>
     </section>
-    
-    <style>
-        .teacherContainer {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-        .teacherCards {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        .teacherCard {
-            flex: 0 0 calc(33.333% - 20px);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin: 10px;
-            min-width: calc(33.333% - 20px);
-        }
-        .teacher-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin-bottom: 15px;
-        }
-        .teacherInfo {
-            width: 100%;
-        }
-        .teacherInfo h3 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 1.4rem;
-        }
-        .teacherInfo p {
-            margin: 5px 0;
-            color: #666;
-        }
-        .specialty {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        .specialty img {
-            width: 40px;
-            height: 40px;
-        }
-    </style>
 
     <section id="teacherSection">
         <div class="container">
             <h2>Mūsų Mokytojai</h2>
             <div class="teacherContainer">
-                <button class="arrowBtn prev"><</button>
-                <button class="arrowBtn next">></button>
+                <button class="arrowBtn prev">
+                    <img src="../Assets/Photographic/Icons/arrow1_slider.svg">
+                </button>
+                <button class="arrowBtn next">
+                    <img src="../Assets/Photographic/Icons/arrow2_slider.svg">
+                </button>
                 <div class="teacherCards">
                     <div class="teacherCard">
-                        <img src="../Assets/Photographic/Stock-images/teacher-jonas.jpg" alt="Jonas Jonaitis" class="teacher-image">
+                        <img src="../Assets/Photographic/Stock-images/teacher-jonas.jpg" alt="Jonas Jonaitis" class="teacherImg">
                         <div class="teacherInfo">
                             <h3>Jonas Jonaitis</h3>
                             <p>Japonų kalbos mokytojas</p>
@@ -353,7 +526,7 @@
                         </div>
                     </div>
                     <div class="teacherCard">
-                        <img src="../Assets/Photographic/Stock-images/teacher-petras.avif" alt="Petras Petraitis" class="teacher-image">
+                        <img src="../Assets/Photographic/Stock-images/teacher-petras.avif" alt="Petras Petraitis" class="teacherImg">
                         <div class="teacherInfo">
                             <h3>Petras Petraitis</h3>
                             <p>Prancūzų kalbos mokytojas</p>
@@ -365,7 +538,7 @@
                         </div>
                     </div>
                     <div class="teacherCard">
-                        <img src="../Assets/Photographic/Stock-images/teacher-ona.jpeg" alt="Ona Onaitė" class="teacher-image">
+                        <img src="../Assets/Photographic/Stock-images/teacher-ona.jpeg" alt="Ona Onaitė" class="teacherImg">
                         <div class="teacherInfo">
                             <h3>Ona Onaitė</h3>
                             <p>Ispanų kalbos mokytoja</p>
@@ -377,7 +550,7 @@
                         </div>
                     </div>
                     <div class="teacherCard">
-                        <img src="../Assets/Photographic/Stock-images/teacher-laura.JPG" alt="Laura Lauraitė" class="teacher-image">
+                        <img src="../Assets/Photographic/Stock-images/teacher-laura.JPG" alt="Laura Lauraitė" class="teacherImg">
                         <div class="teacherInfo">
                             <h3>Laura Lauraitė</h3>
                             <p>Anglų kalbos mokytoja</p>
@@ -389,7 +562,7 @@
                         </div>
                     </div>
                     <div class="teacherCard">
-                        <img src="../Assets/Photographic/Stock-images/teacher-marius.webp" alt="Marius Mariukas" class="teacher-image">
+                        <img src="../Assets/Photographic/Stock-images/teacher-marius.webp" alt="Marius Mariukas" class="teacherImg">
                         <div class="teacherInfo">
                             <h3>Marius Mariukas</h3>
                             <p>Rusų kalbos mokytojas</p>
@@ -482,244 +655,129 @@
             </div>
         </div>
     </section>
-      <style>
-              #successSection {
-                  padding: 80px 0;
-                  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-                  min-height: 600px;
-              }
-
-              .successGrid {
-                  display: grid;
-                  grid-template-columns: repeat(3, 1fr);
-                  gap: 30px;
-                  margin-top: 40px;
-              }
-
-              .successStory {
-                  background: white;
-                  border-radius: 15px;
-                  padding: 25px;
-                  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-                  transition: transform 0.3s ease;
-                  min-height: 350px;
-              }
-
-
-              .successStory:hover {
-                  transform: scale(1.05);
-              }
-
-              .studentInfo {
-                  display: flex;
-                  align-items: center;
-                  margin-bottom: 20px;
-              }
-              .studentAvatar {
-                  width: 60px;
-                  height: 60px;
-                  border-radius: 50%;
-                  overflow: hidden;
-              }
-              .studentAvatar img {
-                  width: 100%;
-                  height: 100%;
-                  object-fit: cover;
-              }
-
-              .achievementStats {
-                  display: flex;
-                  justify-content: space-between;
-                  margin-top: 20px;
-                  padding-top: 20px;
-                  border-top: 1px solid #dee2e6;
-              }
-              .stat {
-                  text-align: center;
-              }
-
-              .statNumber {
-                  font-size: 1.5rem;
-                  font-weight: bold;
-                  color: #0056b3;
-              }
-
-              .statLabel {
-                  font-size: 0.9rem;
-                  color: #6c757d;
-              }
-          </style>
     
-          <section id="successSection">
-              <div class="container">
-                  <h2>Sėkmės Istorijos</h2>
+    <section id="successSection">
+        <div class="container">
+            <h2>Sėkmės Istorijos</h2>
+            <div class="successGrid">
+                <div class="successStory">
+                    <div class="studentInfo">
+                        <div class="studentAvatar">
+                            <img src="https://via.placeholder.com/60" alt="Laura M.">
+                        </div>
+                        <div>
+                            <h3>Laura M.</h3>
+                            <p>B2 → C1 per 6 mėnesius</p>
+                        </div>
+                    </div>
+                    <p>"Dėk tikslą greičiau nei tikėjausi. Dabar laisvai kalbu verslo aplinkoje!"</p>
+
+                    <div class="achievementStats">
+                        <div class="stat">
+                            <div class="statNumber">96</div>
+                            <div class="statLabel">Pamokos</div>
+                        </div>
+                        <div class="stat">
+                            <div class="statNumber">2500+</div>
+                            <div class="statLabel">Žodžiai</div>
+                        </div>
+                        <div class="stat">
+                            <div class="statNumber">C1</div>
+                            <div class="statLabel">Lygis</div>
+                        </div>
+                    </div>
+                </div>
 
 
+                <div class="successStory">
+                    <div class="studentInfo">
+                        <div class="studentAvatar">
+                            <img src="https://via.placeholder.com/60" alt="Tomas K.">
+                        </div>
+                        <div>
+                            <h3>Tomas K.</h3>
+                            <p>A1 → B1 per 8 mėnesius</p>
+                        </div>
+                    </div>
+                    <p>"Pradėjau nuo nulio, bet su sistemingu mokymusi ir praktika pasiekiau rezultatų, kuriais didžiuojuosi. Dabar galiu laisvai bendrauti kasdienėse situacijose."</p>
 
-                  <div class="successGrid">
-                      <div class="successStory">
-                          <div class="studentInfo">
-                              <div class="studentAvatar">
-                                  <img src="https://via.placeholder.com/60" alt="Laura M.">
-                              </div>
-                              <div>
-                                  <h3>Laura M.</h3>
-                                  <p>B2 → C1 per 6 mėnesius</p>
-                              </div>
-                          </div>
-                          <p>"Dėka intensyvių pamokų ir puikaus mokytojo, pasiekiau savo tikslą greičiau nei tikėjausi. Dabar laisvai kalbu verslo aplinkoje!"</p>
-
-                          <div class="achievementStats">
-                              <div class="stat">
-
-
-                                  <div class="statNumber">96</div>
-                                  <div class="statLabel">Pamokos</div>
-                              </div>
-                              <div class="stat">
-
-
-                                  <div class="statNumber">2500+</div>
-                                  <div class="statLabel">Žodžiai</div>
-                              </div>
-                              <div class="stat">
-
-
-                                  <div class="statNumber">C1</div>
-                                  <div class="statLabel">Lygis</div>
-                              </div>
-                          </div>
-                      </div>
+                    <div class="achievementStats">
+                        <div class="stat">
+                            <div class="statNumber">128</div>
+                            <div class="statLabel">Pamokos</div>
+                        </div>
+                        <div class="stat">
+                            <div class="statNumber">1800+</div>
+                            <div class="statLabel">Žodžiai</div>
+                        </div>
+                        <div class="stat">
+                            <div class="statNumber">B1</div>
+                            <div class="statLabel">Lygis</div>
+                        </div>
+                    </div>
+                </div>
 
 
-                      <div class="successStory">
-                          <div class="studentInfo">
-                              <div class="studentAvatar">
-                                  <img src="https://via.placeholder.com/60" alt="Tomas K.">
-                              </div>
-                              <div>
-                                  <h3>Tomas K.</h3>
-                                  <p>A1 → B1 per 8 mėnesius</p>
-                              </div>
-                          </div>
-                          <p>"Pradėjau nuo nulio, bet su sistemingu mokymusi ir praktika pasiekiau rezultatų, kuriais didžiuojuosi. Dabar galiu laisvai bendrauti kasdienėse situacijose."</p>
+                <div class="successStory">
+                    <div class="studentInfo">
+                        <div class="studentAvatar">
+                            <img src="https://via.placeholder.com/60" alt="Ieva P.">
+                        </div>
+                        <div>
+                            <h3>Ieva P.</h3>
+                            <p>B1 → C1 per 12 mėnesių</p>
+                        </div>
+                    </div>
+                    <p>"Nuoseklus darbas ir profesionalus mokytojas padėjo man pasiekti aukščiausią kalbos lygį. Dabar galiu laisvai skaityti literatūrą originalo kalba!"</p>
 
-                          <div class="achievementStats">
-                              <div class="stat">
+                    <div class="achievementStats">
+                        <div class="stat">
+                            <div class="statNumber">192</div>
+                            <div class="statLabel">Pamokos</div>
+                        </div>
+                        <div class="stat">
+                            <div class="statNumber">3000+</div>
+                            <div class="statLabel">Žodžiai</div>
+                        </div>
+                        <div class="stat">
+                            <div class="statNumber">C1</div>
+                            <div class="statLabel">Lygis</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-
-                                  <div class="statNumber">128</div>
-                                  <div class="statLabel">Pamokos</div>
-                              </div>
-                              <div class="stat">
-
-
-                                  <div class="statNumber">1800+</div>
-                                  <div class="statLabel">Žodžiai</div>
-                              </div>
-                              <div class="stat">
-
-
-                                  <div class="statNumber">B1</div>
-                                  <div class="statLabel">Lygis</div>
-                              </div>
-                          </div>
-                      </div>
-
-
-                      <div class="successStory">
-                          <div class="studentInfo">
-                              <div class="studentAvatar">
-                                  <img src="https://via.placeholder.com/60" alt="Ieva P.">
-                              </div>
-                              <div>
-                                  <h3>Ieva P.</h3>
-                                  <p>B1 → C1 per 12 mėnesių</p>
-                              </div>
-                          </div>
-                          <p>"Nuoseklus darbas ir profesionalus mokytojas padėjo man pasiekti aukščiausią kalbos lygį. Dabar galiu laisvai skaityti literatūrą originalo kalba!"</p>
-
-                          <div class="achievementStats">
-                              <div class="stat">
-
-
-                                  <div class="statNumber">192</div>
-                                  <div class="statLabel">Pamokos</div>
-                              </div>
-                              <div class="stat">
-
-
-                                  <div class="statNumber">3000+</div>
-                                  <div class="statLabel">Žodžiai</div>
-                              </div>
-                              <div class="stat">
-
-
-                                  <div class="statNumber">C1</div>
-                                  <div class="statLabel">Lygis</div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </section>
-    
-          <script>
-
-              document.querySelectorAll('.successStory').forEach(story => {
-                  story.addEventListener('mouseenter', () => {
-
-                      story.style.transform = 'scale(1.05)';
-                  });
-                  story.addEventListener('mouseleave', () => {
-
-                      story.style.transform = 'scale(1)';
-                  });
-              });
-
-          </script>
-    <style>
-        #faqSection {
-            padding: 20px 0;
-            height: 40vh;
-        }
-        .faqItem {
-            background: white;
-            border-bottom: 1px solid #ddd;
-            cursor: pointer;
-        }
-        .faqItem h3 {
-            padding: 15px;
-            margin: 0;
-            font-size: 1.1rem;
-            color: #333;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .faqItem h3::after {
-            content: '';
-            width: 20px;
-            height: 20px;
-            background-image: url('arrow_right.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-        .faqItem.active h3::after {
-            background-image: url('arrow_down.png');
-        }
-        .faqItem p {
-            margin: 0;
-            padding: 0 15px 15px;
-            color: #666;
-            display: none;
-        }
-        .faqItem.active p {
-            display: block;
-        }
-    </style>
-
+            <section id="businessSuccess">
+                <div class="container">
+                    <h2 style="text-align: center; margin-bottom: 40px;">Our Success Story</h2>
+                    <div class="successContainer">
+                        <div class="successItem">
+                            <img src="../Assets/Photographic/Icons/star-rating.svg" alt="Students" class="successIcon">
+                            <div class="successNum">500+</div>
+                            <div class="successLabel">Students Taught</div>
+                        </div>
+                        <div class="successItem">
+                            <img src="https://via.placeholder.com/60/007bff/ffffff?text=T" alt="Teachers" class="successIcon">
+                            <div class="successNum">25</div>
+                            <div class="successLabel">Expert Teachers</div>
+                        </div>
+                        <div class="successItem">
+                            <img src="../Assets/Photographic/Icons/star-rating.svg" alt="Rating" class="successIcon">
+                            <div class="successNum">4.9</div>
+                            <div class="successLabel">Average Rating</div>
+                        </div>
+                        <div class="successItem">
+                            <img src="../Assets/Photographic/Icons/bar-graph.svg" alt="Success" class="successIcon">
+                            <div class="successNum">98%</div>
+                            <div class="successLabel">Success Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+          
+          
     <section id="faqSection" style="background-color: #f8f9fa;">
         <div class="container">
             <h2>Dažniausiai Užduodami Klausimai</h2>
@@ -739,46 +797,16 @@
             </div>
         </div>
     </section>
-
-    <script>
-        document.querySelectorAll('.faqItem').forEach(item => {
-            item.addEventListener('click', (e) => {
-                e.preventDefault();
-                // Close all other items
-                document.querySelectorAll('.faqItem').forEach(otherItem => {
-                    if (otherItem !== item && otherItem.classList.contains('active')) {
-                        otherItem.classList.remove('active');
-                    }
-                });
-                // Toggle current item
-                item.classList.toggle('active');
-            });
-        });
-    </script>
     <style>
-        .faqItem h3::after {
-            content: '';
-            width: 24px;
-            height: 24px;
-            background-image: url('../Assets/Photographic/Icons/arrow_right.svg');
-            background-color: #e9ecef;
-            background-size: 16px;
-            background-repeat: no-repeat;
-            background-position: center;
-            display: inline-block;
-            border-radius: 50%;
+        .faqItem p {
+          padding: 0 18px;
+          background-color: white;
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.2s ease-out;
         }
-        .faqItem.active h3::after {
-            background-image: url('../Assets/Photographic/Icons/arrow_down.svg');
-        }
-        .faqItem h3 {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px;
-            margin: 0;
-        }
-    </style>
+        </style>
+
     <section class="footer">
           <div class="container">
               <div class="footerContent">
@@ -813,40 +841,34 @@
               </div>
           </div>
       </section>
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const container = document.querySelector('.teacherCards');
-            const cards = document.querySelectorAll('.teacherCard');
-            const prevBtn = document.querySelector('.prev');
-            const nextBtn = document.querySelector('.next');
-            let currentIndex = 1;
 
-            function updateSlider() {
-                const cardWidth = cards[0].offsetWidth + 20;
-                container.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-                
-                prevBtn.classList.toggle('visible', currentIndex > 0);
-                nextBtn.classList.toggle('visible', currentIndex < cards.length - 3);
-            }
-
-            prevBtn.addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateSlider();
-                }
-            });
-
-            nextBtn.addEventListener('click', () => {
-                if (currentIndex < cards.length - 3) {
-                    currentIndex++;
-                    updateSlider();
-                }
-            });
-
-            updateSlider();
-
-            window.addEventListener('resize', updateSlider);
-        });
-    </script>
+    <style>
+      .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+      }
+      
+      .active, .accordion:hover {
+        background-color: #ccc;
+      }
+      
+      .panel {
+        padding: 0 18px;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+      }
+      </style>
+      <body>
+<script src="index.js"></script>
 </body>
 </html>
