@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brainlang</title>
     <style>
+        /* Fonts import into HTML file */
         @font-face {
             font-family: "SF-Regular";
             src: url("../Assets/Fonts/SF-Regular.otf");
         }
+
+        /* General styling */
         * {
             margin: 0;
             padding: 0;
@@ -19,6 +22,26 @@
             line-height: 1.6;
             color: #333;
         }
+
+        section {
+            padding: 100px 0;
+            background-color: #fff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .sectionTitle {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        /* Navigation bar styling */
         nav {
             position: fixed;
             width: 100%;
@@ -47,21 +70,8 @@
             transform: translateY(-3px);
             display: inline-block;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        section {
-            padding: 100px 0;
-            background-color: #fff;
-        }
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            color: #2c3e50;
-            text-align: center;
-        }
+
+        /* Learning journey section styling */
         .journeyCards {
             display: flex;
             flex-wrap: wrap;
@@ -78,12 +88,12 @@
             border-radius: 20px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             padding: 20px;
-            text-align: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             transform: translateY(calc(30px * var(--offset)));
             text-align: left;
+            margin-bottom: 50px;
         }
         .journeyNums {
             position: absolute;
@@ -106,45 +116,22 @@
             margin-bottom: 15px;
             font-size: 1.3rem;
         }
-        .arrowBtn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-80%);
-            background: rgba(0, 0, 0, 0.116);
-            border: none;
-            padding: 15px;
-            cursor: pointer;
-            border-radius: 50%;
-            height: 50px;
-            width: 50px;
-            z-index: 2;
-            display: none;
-            margin: 0 15px;
-        }
-        .arrowBtn.visible {
-            display: block;
-        }
-        .prev {
-            left: 10px;
-        }
-        .next {
-            right: 10px;
-        }
 
-        #successSection {
+        /* Success of students section styling */
+        #studentSection {
             padding: 80px 0;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             min-height: 600px;
         }
 
-        .successGrid {
+        .studentGrid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             margin-top: 40px;
         }
 
-        .successStory {
+        .studentStory {
             background: white;
             border-radius: 15px;
             padding: 25px;
@@ -154,7 +141,7 @@
         }
 
 
-        .successStory:hover {
+        .studentStory:hover {
             transform: scale(1.05);
         }
 
@@ -162,20 +149,16 @@
             display: flex;
             align-items: center;
             margin-bottom: 20px;
-        }
-        .studentAvatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-        .studentAvatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            gap: 20px;
         }
 
-        .achievementStats {
+        .studentImg {
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .studentStats {
             display: flex;
             justify-content: space-between;
             margin-top: 20px;
@@ -183,22 +166,24 @@
             border-top: 2px solid #dee2e6;
             align-items: flex-end;
         }
+
         .stat {
             text-align: center;
         }
 
-        .statNumber {
+        .studentStatNum {
             font-size: 1.5rem;
             font-weight: bold;
             color: #0056b3;
         }
 
-        .statLabel {
+        .studentStatLabel {
             font-size: 0.9rem;
             color: #6c757d;
         }
 
-        .mainSection {
+        /* CTA section styling */
+        .ctaSection {
             background-image: url('background.png');
             background-size: cover;
             background-position: center;
@@ -211,16 +196,19 @@
             padding: 2rem;
             color: white;
         }
-        .mainTitle {
+
+        .ctaTitle {
             font-size: 3.5rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-        .mainSubtitle {
+
+        .ctaSubtitle {
             font-size: 1.5rem;
             margin-bottom: 2rem;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
+
         .ctaButton {
             padding: 1rem 2rem;
             font-size: 1.2rem;
@@ -231,60 +219,23 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
+
         .ctaButton:hover {
             background-color: #0056b3;
         }
 
-        .priceCards {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .priceCard {
-            flex: 1;
-            min-width: 280px;
-            text-align: center;
-            padding: 40px 20px;
-            border-radius: 20px;
-            background: linear-gradient(145deg, #ffffff, #f0f0f0);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        .priceCard h3 {
-            color: #2c3e50;
-            margin-bottom: 20px;
-        }
-        .price {
-            font-size: 2.5rem;
-            color: #3498db;
-            margin-bottom: 20px;
-        }
-        #bestSeller {
-            border: 2px solid #3498db;
-            transform: scale(1.05);
-        }
-        #bestSellerTag {
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            background: #e74c3c;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-        }
+        /* FAQ section styling */
         #faqSection {
             padding: 20px 0;
             height: 40vh;
         }
+        
         .faqItem {
             background: white;
             border-bottom: 1px solid #ddd;
             cursor: pointer;
         }
+
         .faqItem h3 {
             padding: 15px;
             margin: 0;
@@ -294,6 +245,7 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .faqItem h3::after {
             content: '';
             width: 20px;
@@ -303,15 +255,18 @@
             background-repeat: no-repeat;
             background-position: center;
         }
+
         .faqItem.active h3::after {
             background-image: url('arrow_down.png');
         }
+
         .faqItem p {
             margin: 0;
             padding: 0 15px 15px;
             color: #666;
             display: none;
         }
+
         .faqItem.active p {
             display: block;
         }
@@ -328,9 +283,11 @@
             display: inline-block;
             border-radius: 50%;
         }
+
         .faqItem.active h3::after {
             background-image: url('../Assets/Photographic/Icons/arrow_down.svg');
         }
+
         .faqItem h3 {
             display: flex;
             justify-content: space-between;
@@ -339,6 +296,7 @@
             margin: 0;
         }
 
+        /* Footer section styling */
         .footer {
             background-color: #1a1a1a;
             color: white;
@@ -377,25 +335,32 @@
               padding-top: 20px;
               border-top: 1px solid #333;
         }
+
+        .footerBottom img {
+            width: 30px;
+            filter: invert(100%) sepia(4%) saturate(7500%) hue-rotate(264deg) brightness(109%) contrast(100%);
+        }
+
+        .footerBottom img:hover {
+            width: 30px;
+            filter: invert(100%) sepia(4%) saturate(7500%) hue-rotate(264deg) brightness(109%) contrast(100%);
+        }
         
         .footerSocials a {
-              color: white;
-              margin-left: 20px;
-              text-decoration: none;
-              font-size: 20px;
-          }
-        
-        .footerSocials a:hover {
-              color: #007bff;
-              transition: color 0.3s ease;
-          }
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-size: 20px;
+        }
 
+        /* Teachers' information section styling */
         .teacherContainer {
             position: relative;
             max-width: 1200px;
             margin: 0 auto;
             overflow: hidden;
         }
+
         .teacherCards {
             display: flex;
             transition: transform 0.5s ease;
@@ -433,10 +398,12 @@
             font-size: 1.4rem;
         }
 
+
         .teacherInfo p {
             margin: 5px 0;
             color: #666;
         }
+
         .specialty {
             display: flex;
             flex-direction: column;
@@ -445,14 +412,13 @@
             gap: 15px;
             margin-top: 15px;
         }
+
         .specialty img {
             width: 40px;
             height: 40px;
         }
-        #businessSuccess {
-            background-color: #ffffff;
-            padding: 40px 0;
-        }
+
+        /* Success statistics section */
         .successContainer {
             display: flex;
             justify-content: space-around;
@@ -461,50 +427,113 @@
             max-width: 1200px;
             margin: 0 auto;
         }
+
         .successItem {
             text-align: center;
             flex: 1;
             min-width: 200px;
             padding: 20px;
         }
+
         .successIcon {
             width: 60px;
             height: 60px;
             margin: 0 auto 15px;
         }
+        
         .successNum {
             font-size: 2.8rem;
             font-weight: bold;
-            color: #007bff;
+            color: #0056b3;
             margin: 10px 0;
         }
+
         .successLabel {
             color: #666;
             font-size: 1.1rem;
             font-weight: 500;
         }
+
+        /* Plan prices section */
+        .planCards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .planCard {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 20px;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .planCard h3 {
+            margin-bottom: 30px;
+        }
+
+        .plan {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 8px;
+        }
+
+        .plan h1 {
+            font-size: 2.5rem;
+            color: #0056b3;
+        }
+
+        #bestSeller {
+            border: 2px solid #0056b3;
+            transform: scale(1.05);
+        }
+
+        #bestSellerTag {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: #0056b3;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
+    <!-- Navigation bar -->
     <nav>
         <h1>Languify</h1>
         <div>
             <a href="#teacherSection">Mokytojai</a>
-            <a href="#priceSection">Kainos</a>
-            <a href="#courseSection">Kursai</a>
+            <a href="#planSection">Kainos</a>
+            <a href="#journeySection">Kursai</a>
             <a href="#faqSection">DUK</a>
         </div>
     </nav>
     
-    <section class="mainSection">
-        <h1 class="mainTitle">Mokykis kalbų su profesionalais</h1>
-        <p class="mainSubtitle">Atrask naujus horizontus su Languify</p>
-        <button class="ctaButton">Pradėti mokytis</button>
+    <!-- CTA section -->
+    <section class="ctaSection">
+        <div class="container">
+            <h1 class="ctaTitle">Mokykis kalbų su profesionalais</h1>
+            <p class="ctaSubtitle">Atrask naujus horizontus su Languify</p>
+            <button class="ctaButton">Pradėti mokytis</button>
+        </div>
     </section>
 
+    <!-- Teachers' information section -->
     <section id="teacherSection">
         <div class="container">
-            <h2>Mūsų Mokytojai</h2>
+            <h2 class="sectionTitle">Mūsų Mokytojai</h2>
             <div class="teacherContainer">
                 <button class="arrowBtn prev">
                     <img src="../Assets/Photographic/Icons/arrow1_slider.svg">
@@ -512,7 +541,9 @@
                 <button class="arrowBtn next">
                     <img src="../Assets/Photographic/Icons/arrow2_slider.svg">
                 </button>
+                <!-- Teacher cards -->
                 <div class="teacherCards">
+                    <!-- Teacher Jonas Jonaitis -->
                     <div class="teacherCard">
                         <img src="../Assets/Photographic/Stock-images/teacher-jonas.jpg" alt="Jonas Jonaitis" class="teacherImg">
                         <div class="teacherInfo">
@@ -525,6 +556,8 @@
                             </p>
                         </div>
                     </div>
+
+                    <!-- Teacher Petras Petraitis -->
                     <div class="teacherCard">
                         <img src="../Assets/Photographic/Stock-images/teacher-petras.avif" alt="Petras Petraitis" class="teacherImg">
                         <div class="teacherInfo">
@@ -537,6 +570,8 @@
                             </p>
                         </div>
                     </div>
+
+                    <!-- Teacher Ona Onaitė -->
                     <div class="teacherCard">
                         <img src="../Assets/Photographic/Stock-images/teacher-ona.jpeg" alt="Ona Onaitė" class="teacherImg">
                         <div class="teacherInfo">
@@ -549,6 +584,8 @@
                             </p>
                         </div>
                     </div>
+
+                    <!-- Teacher Laura Lauraitė -->
                     <div class="teacherCard">
                         <img src="../Assets/Photographic/Stock-images/teacher-laura.JPG" alt="Laura Lauraitė" class="teacherImg">
                         <div class="teacherInfo">
@@ -561,6 +598,8 @@
                             </p>
                         </div>
                     </div>
+
+                    <!-- Teacher Marius Mariukas -->
                     <div class="teacherCard">
                         <img src="../Assets/Photographic/Stock-images/teacher-marius.webp" alt="Marius Mariukas" class="teacherImg">
                         <div class="teacherInfo">
@@ -576,37 +615,46 @@
                 </div>
             </div>
         </div>
-    </section>    <section id="priceSection" style="background-color: #f8f9fa;">
+    </section>
+
+    <!-- Plan prices section -->
+    <section id="planSection" style="background-color: #f8f9fa;">
         <div class="container">
-            <h2>Kainos</h2>
-            <div class="priceCards">
-                <div class="priceCard">
+            <h2 class="sectionTitle">Planų kainos</h2>
+            <div class="planCards">
+                <div class="planCard">
                     <h3>Pradedančiųjų kursas</h3>
-                    <div class="price">30€</div>
-                    <p>per mėnesį</p>
+                    <div class="plan">
+                        <h1>40€</h1>
+                        <p>/mėn</p>
+                    </div>
                     <ul style="list-style: none; margin: 20px 0;">
                         <li>✓ 8 pamokos per mėnesį</li>
                         <li>✓ Mokomoji medžiaga</li>
                         <li>✓ Pradedančiųjų grupė</li>
                     </ul>
                 </div>
-                <div class="priceCard" id="bestSeller">
+                <div class="planCard" id="bestSeller">
                     <div id="bestSellerTag">
                         Populiariausias
                     </div>
                     <h3>Vidutinis lygis</h3>
-                    <div class="price">40€</div>
-                    <p>per mėnesį</p>
+                    <div class="plan">
+                        <h1>40€</h1>
+                        <p>/mėn</p>
+                    </div>
                     <ul style="list-style: none; margin: 20px 0;">
                         <li>✓ 12 pamokų per mėnesį</li>
                         <li>✓ Papildoma praktika</li>
                         <li>✓ Video medžiaga</li>
                     </ul>
                 </div>
-                <div class="priceCard">
+                <div class="planCard">
                     <h3>Pažengusiųjų kursas</h3>
-                    <div class="price">50€</div>
-                    <p>per mėnesį</p>
+                    <div class="plan">
+                        <h1>40€</h1>
+                        <p>/mėn</p>
+                    </div>
                     <ul style="list-style: none; margin: 20px 0;">
                         <li>✓ 16 pamokų per mėnesį</li>
                         <li>✓ Individualus planas</li>
@@ -617,37 +665,37 @@
         </div>
     </section>
 
-
-    <section id="courseSection" style="height: 950px;">
+    <!-- Learning journey section -->
+    <section id="journeySection" style="height: 950px;">
         <div class="container">
-            <h2>Jūsų Mokymosi Kelionė</h2>
+            <h2 class="sectionTitle">Jūsų Mokymosi Kelionė</h2>
             <div class="journeyCards">
-                <div class="journeyCard" style="--offset: 0">
+                <div class="journeyCard">
                     <div class="journeyNums">1</div>
                     <h3>Pradžia</h3>
                     <p>Nemokama konsultacija ir kalbos lygio nustatymas.</p>
                 </div>
-                <div class="journeyCard" style="--offset: 1">
+                <div class="journeyCard">
                     <div class="journeyNums">2</div>
                     <h3>Pagrindai</h3>
                     <p>Bazinės gramatikos ir žodyno formavimas.</p>
                 </div>
-                <div class="journeyCard" style="--offset: 2">
+                <div class="journeyCard">
                     <div class="journeyNums">3</div>
                     <h3>Tarimas ir kirčiavimas</h3>
                     <p>Teisingo tarimo, kirčiavimo formavimas, įpročiai.</p>
                 </div>
-                <div class="journeyCard" style="--offset: 3">
+                <div class="journeyCard">
                     <div class="journeyNums">4</div>
                     <h3>Įgūdžių tobulinimas, patarimai</h3>
                     <p>Specializuotos temos ir sudėtingesnės užduotys.</p>
                 </div>
-                <div class="journeyCard" style="--offset: 4">
+                <div class="journeyCard">
                     <div class="journeyNums">5</div>
                     <h3>Pažengęs Lygis</h3>
                     <p>Laisvas bendravimas ir kultūros pažinimas.</p>
                 </div>
-                <div class="journeyCard" style="--offset: 5">
+                <div class="journeyCard">
                     <div class="journeyNums">6</div>
                     <h3>Meistriškumas</h3>
                     <p>Profesionalus kalbos vartojimas, iškalbumas.</p>
@@ -656,92 +704,84 @@
         </div>
     </section>
     
-    <section id="successSection">
+    <!-- Success of students section -->
+    <section id="studentSection">
         <div class="container">
-            <h2>Sėkmės Istorijos</h2>
-            <div class="successGrid">
-                <div class="successStory">
+            <h2 class="sectionTitle">Mokinių sėkmės Istorijos</h2>
+            <div class="studentGrid">
+                <div class="studentStory">
                     <div class="studentInfo">
-                        <div class="studentAvatar">
-                            <img src="https://via.placeholder.com/60" alt="Laura M.">
-                        </div>
+                        <img src="https://via.placeholder.com/60" class="studentImg" alt="Laura">
                         <div>
                             <h3>Laura M.</h3>
                             <p>B2 → C1 per 6 mėnesius</p>
                         </div>
                     </div>
                     <p>"Dėk tikslą greičiau nei tikėjausi. Dabar laisvai kalbu verslo aplinkoje!"</p>
-
-                    <div class="achievementStats">
+                    <div class="studentStats">
                         <div class="stat">
-                            <div class="statNumber">96</div>
-                            <div class="statLabel">Pamokos</div>
+                            <div class="studentStatNum">96</div>
+                            <div class="studentStatLabel">Pamokos</div>
                         </div>
                         <div class="stat">
-                            <div class="statNumber">2500+</div>
-                            <div class="statLabel">Žodžiai</div>
+                            <div class="studentStatNum">2500+</div>
+                            <div class="studentStatLabel">Žodžiai</div>
                         </div>
                         <div class="stat">
-                            <div class="statNumber">C1</div>
-                            <div class="statLabel">Lygis</div>
+                            <div class="studentStatNum">C1</div>
+                            <div class="studentStatLabel">Lygis</div>
                         </div>
                     </div>
                 </div>
 
 
-                <div class="successStory">
+                <div class="studentStory">
                     <div class="studentInfo">
-                        <div class="studentAvatar">
-                            <img src="https://via.placeholder.com/60" alt="Tomas K.">
-                        </div>
+                        <img src="https://via.placeholder.com/60" class="studentImg" alt="Tomas">
                         <div>
-                            <h3>Tomas K.</h3>
+                            <h3>Tomas</h3>
                             <p>A1 → B1 per 8 mėnesius</p>
                         </div>
                     </div>
                     <p>"Pradėjau nuo nulio, bet su sistemingu mokymusi ir praktika pasiekiau rezultatų, kuriais didžiuojuosi. Dabar galiu laisvai bendrauti kasdienėse situacijose."</p>
-
-                    <div class="achievementStats">
+                    <div class="studentStats">
                         <div class="stat">
-                            <div class="statNumber">128</div>
-                            <div class="statLabel">Pamokos</div>
+                            <div class="studentStatNum">128</div>
+                            <div class="studentStatLabel">Pamokos</div>
                         </div>
                         <div class="stat">
-                            <div class="statNumber">1800+</div>
-                            <div class="statLabel">Žodžiai</div>
+                            <div class="studentStatNum">1800+</div>
+                            <div class="studentStatLabel">Žodžiai</div>
                         </div>
                         <div class="stat">
-                            <div class="statNumber">B1</div>
-                            <div class="statLabel">Lygis</div>
+                            <div class="studentStatNum">B1</div>
+                            <div class="studentStatLabel">Lygis</div>
                         </div>
                     </div>
                 </div>
 
 
-                <div class="successStory">
+                <div class="studentStory">
                     <div class="studentInfo">
-                        <div class="studentAvatar">
-                            <img src="https://via.placeholder.com/60" alt="Ieva P.">
-                        </div>
+                        <img src="https://via.placeholder.com/60" class="studentImg" alt="Ieva">
                         <div>
-                            <h3>Ieva P.</h3>
+                            <h3>Ieva</h3>
                             <p>B1 → C1 per 12 mėnesių</p>
                         </div>
                     </div>
                     <p>"Nuoseklus darbas ir profesionalus mokytojas padėjo man pasiekti aukščiausią kalbos lygį. Dabar galiu laisvai skaityti literatūrą originalo kalba!"</p>
-
-                    <div class="achievementStats">
+                    <div class="studentStats">
                         <div class="stat">
-                            <div class="statNumber">192</div>
-                            <div class="statLabel">Pamokos</div>
+                            <div class="studentStatNum">192</div>
+                            <div class="studentStatLabel">Pamokos</div>
                         </div>
                         <div class="stat">
-                            <div class="statNumber">3000+</div>
-                            <div class="statLabel">Žodžiai</div>
+                            <div class="studentStatNum">3000+</div>
+                            <div class="studentStatLabel">Žodžiai</div>
                         </div>
                         <div class="stat">
-                            <div class="statNumber">C1</div>
-                            <div class="statLabel">Lygis</div>
+                            <div class="studentStatNum">C1</div>
+                            <div class="studentStatLabel">Lygis</div>
                         </div>
                     </div>
                 </div>
@@ -749,38 +789,39 @@
         </div>
     </section>
 
-            <section id="businessSuccess">
-                <div class="container">
-                    <h2 style="text-align: center; margin-bottom: 40px;">Our Success Story</h2>
-                    <div class="successContainer">
-                        <div class="successItem">
-                            <img src="../Assets/Photographic/Icons/star-rating.svg" alt="Students" class="successIcon">
-                            <div class="successNum">500+</div>
-                            <div class="successLabel">Students Taught</div>
-                        </div>
-                        <div class="successItem">
-                            <img src="https://via.placeholder.com/60/007bff/ffffff?text=T" alt="Teachers" class="successIcon">
-                            <div class="successNum">25</div>
-                            <div class="successLabel">Expert Teachers</div>
-                        </div>
-                        <div class="successItem">
-                            <img src="../Assets/Photographic/Icons/star-rating.svg" alt="Rating" class="successIcon">
-                            <div class="successNum">4.9</div>
-                            <div class="successLabel">Average Rating</div>
-                        </div>
-                        <div class="successItem">
-                            <img src="../Assets/Photographic/Icons/bar-graph.svg" alt="Success" class="successIcon">
-                            <div class="successNum">98%</div>
-                            <div class="successLabel">Success Rate</div>
-                        </div>
-                    </div>
+    <!-- Success statistics section -->
+    <section id="successSection" style="background-color: #ffffff;"
+        <div class="container">
+            <h2 class="sectionTitle" style="text-align: center; margin-bottom: 40px;">Mūsų sėkmės istorija</h2>
+            <div class="successContainer">
+                <div class="successItem">
+                    <img src="../Assets/Photographic/Icons/student.svg" alt="Students" class="successIcon">
+                    <div class="successNum">300+</div>
+                    <div class="successLabel">Mokinių išmokyta</div>
                 </div>
-            </section>
+                <div class="successItem">
+                    <img src="../Assets/Photographic/Icons/teacher.svg" alt="Teachers" class="successIcon">
+                    <div class="successNum">15</div>
+                    <div class="successLabel">Profesionalūs mokytojai</div>
+                </div>
+                <div class="successItem">
+                    <img src="../Assets/Photographic/Icons/star-rating.svg" alt="Rating" class="successIcon">
+                    <div class="successNum">4.9</div>
+                    <div class="successLabel">Įvertinimų vidurkis</div>
+                </div>
+                <div class="successItem">
+                    <img src="../Assets/Photographic/Icons/success-rate.svg" alt="Success" class="successIcon">
+                    <div class="successNum">98%</div>
+                    <div class="successLabel">Sėkmės vidurkis</div>
+                </div>
+            </div>
+        </div>
+    </section>
           
-          
+    <!-- FAQ section -->
     <section id="faqSection" style="background-color: #f8f9fa;">
         <div class="container">
-            <h2>Dažniausiai Užduodami Klausimai</h2>
+            <h2 class="sectionTitle">DUK: Dažniausiai Užduodami Klausimai</h2>
             <div id="faqQuestions">
                 <div class="faqItem">
                     <h3>Kaip vyksta pamokos?</h3>
@@ -797,78 +838,44 @@
             </div>
         </div>
     </section>
-    <style>
-        .faqItem p {
-          padding: 0 18px;
-          background-color: white;
-          max-height: 0;
-          overflow: hidden;
-          transition: max-height 0.2s ease-out;
-        }
-        </style>
 
+    <!-- Footer section -->
     <section class="footer">
-          <div class="container">
-              <div class="footerContent">
-                  <div class="footerColumn">
-                      <h3>Kontaktai</h3>
-                      <p>Email: info@kalbuakademija.lt</p>
-                      <p>Tel: +370 600 00000</p>
-                      <p>Darbo laikas: I-V 9:00-18:00</p>
-                  </div>
-                  <div class="footerColumn">
-                      <h3>Lokacijos</h3>
-                      <p>Vilnius: Gedimino pr. 1</p>
-                      <p>Kaunas: Laisvės al. 1</p>
-                      <p>Klaipėda: H. Manto g. 1</p>
-                  </div>
-              </div>
-              <div class="footerBottom">
-                  <div class="copyright">
-                      <p>© 2024 Kalbų Akademija. Visos teisės saugomos.</p>
-                  </div>
-                  <div class="footerSocials">
-                      <a href="#">
-                          <i class="fab fa-facebook"></i>
-                      </a>
-                      <a href="#">
-                          <i class="fab fa-instagram"></i>
-                      </a>
-                      <a href="#">
-                          <i class="fab fa-linkedin"></i>
-                      </a>
-                  </div>
-              </div>
-          </div>
-      </section>
+        <div class="container">
+            <div class="footerContent">
+                <div class="footerColumn">
+                    <h3>Kontaktai</h3>
+                    <p>Email: info@kalbuakademija.lt</p>
+                    <p>Tel: +370 600 00000</p>
+                    <p>Darbo laikas: I-V 9:00-18:00</p>
+                </div>
+                <div class="footerColumn">
+                    <h3>Lokacijos</h3>
+                    <p>Vilnius: Gedimino pr. 1</p>
+                    <p>Kaunas: Laisvės al. 1</p>
+                    <p>Klaipėda: H. Manto g. 1</p>
+                </div>
+            </div>
+                <div class="footerBottom">
+                    <div class="copyright">
+                        <p>© 2024 Kalbų Akademija. Visos teisės saugomos.</p>
+                    </div>
+                    <div class="footerSocials">
+                    <a href="#">
+                        <img src="../Assets/Photographic/Icons/facebook-logo.svg">
+                    </a>
+                    <a href="#">
+                        <img src="../Assets/Photographic/Icons/instagram-logo.svg">
+                    </a>
+                    <a href="#">
+                        <img src="../Assets/Photographic/Icons/linkedin-logo.svg">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <style>
-      .accordion {
-        background-color: #eee;
-        color: #444;
-        cursor: pointer;
-        padding: 18px;
-        width: 100%;
-        border: none;
-        text-align: left;
-        outline: none;
-        font-size: 15px;
-        transition: 0.4s;
-      }
-      
-      .active, .accordion:hover {
-        background-color: #ccc;
-      }
-      
-      .panel {
-        padding: 0 18px;
-        background-color: white;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.2s ease-out;
-      }
-      </style>
-      <body>
+<!-- Connecting HTML to CSS file -->
 <script src="index.js"></script>
 </body>
 </html>
