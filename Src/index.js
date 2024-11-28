@@ -45,3 +45,38 @@ document.querySelectorAll('.faqItem').forEach(item => {
         item.classList.toggle('active');
     });
 });
+
+// PLAN PRICES CHANGE
+function changePeriod(period) {
+    const basePrice = 40;
+    let price, periodText, discount;
+    
+    // Remove active class from all buttons
+    document.querySelectorAll('.payment-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Add active class to clicked button
+    event.target.classList.add('active');
+    
+    if (period === 'month') {
+        price = basePrice;
+        periodText = '/mėn';
+        discount = '';
+    } else if (period === 'halfYear') {
+        price = Math.round(basePrice * 6 * 0.9 / 6);
+        periodText = '/mėn';
+        discount = 'Sutaupote 10%';
+    } else if (period === 'year') {
+        price = Math.round(basePrice * 12 * 0.8 / 12);
+        periodText = '/mėn';
+        discount = 'Sutaupote 20%';
+    }
+    
+    // Update prices and periods for all plans
+    ['basic', 'medium', 'advanced'].forEach(plan => {
+        document.getElementById(`${plan}-price`).textContent = price + '€';
+        document.getElementById(`${plan}-period`).textContent = periodText;
+        document.getElementById(`${plan}-discount`).textContent = discount;
+    });
+}

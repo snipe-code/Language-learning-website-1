@@ -16,16 +16,15 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            
         }
         body {
             font-family: 'SF-Regular';
             line-height: 1.6;
-            color: #333;
         }
 
         section {
             padding: 100px 0;
-            background-color: #fff;
         }
         
         .container {
@@ -37,8 +36,15 @@
         .sectionTitle {
             font-size: 2.5rem;
             margin-bottom: 40px;
-            color: #2c3e50;
             text-align: center;
+        }
+
+        /* Sections styling */
+        #ctaSection {
+            display: flex;
+            align-items: center;
+            padding: 15vh 0 4vh 0;
+            height: 90vh;
         }
 
         /* Navigation bar styling */
@@ -49,26 +55,331 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             z-index: 1000;
-            display: flex;
+            border-bottom: 2px solid transparent;
         }
+
         nav h1 {
             font-size: 2rem;
-            color: #2c3e50;
+            position: relative;
         }
+
         nav a {
-            text-decoration: none;
-            color: #2c3e50;
-            margin-left: 30px;
+            text-decoration: none; 
+            margin-left: 20px;
             font-weight: 500;
-            transition: all 0.2s ease;
+            color: #333;
+            position: relative;
+            padding: 5px 10px;
+            border-radius: 15px;
         }
+
+        nav a:last-child {
+            margin-right: 55px;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(to right, #0056b3, #00b3b3);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        nav a:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
         nav a:hover {
-            color: #3498db;
-            transform: translateY(-3px);
-            display: inline-block;
+            color: #0056b3;
+        }
+        
+        /* CTA section styling */
+        .ctaContent {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .ctaText {
+            flex: 1;
+            text-align: left;
+        }
+
+        .ctaTitle {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+            line-height: 1.2;
+        }
+
+        .ctaSubtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .ctaButton {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, #0056b3 0%, #007bff 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(0, 86, 179, 0.3);
+        }
+
+        .ctaButton:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 86, 179, 0.4);
+        }
+
+        .arrowIcon {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .ctaButton:hover .arrowIcon {
+            transform: translateX(5px);
+        }
+
+        .ctaImageContainer {
+            flex: 1;
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .ctaImage {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .ctaImageContainer:hover .ctaImage {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .ctaContent {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .ctaText {
+                text-align: center;
+            }
+
+            .ctaButton {
+                margin: 0 auto;
+            }
+        }
+
+        .ctaSocials img {
+            width: 30px;
+            margin-top: 15px;
+            margin-right: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .ctaSocials a {
+            text-decoration: none;            
+        }
+
+        .ctaSocials a:first-child {
+            margin-left: 25px;
+        }
+
+        /* Teachers' information section styling */
+        .teacherContainer {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .teacherCards {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .teacherCard {
+            flex: 0 0 calc(33.333% - 20px);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 10px;
+            min-width: calc(33.333% - 20px);
+        }
+
+        .teacherImg {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        .teacherInfo {
+            width: 100%;
+        }
+
+        .teacherInfo h3 {
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+
+
+        .teacherInfo p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .specialty {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .specialty img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .arrowBtn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.164);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            z-index: 2;
+            display: none;
+            height: 50px;
+            width: 50px;
+            margin: 0 10px;
+
+        }
+        .arrowBtn.visible {
+            display: block;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+
+        /* Plan prices section */
+        .payment-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .payment-btn {
+            padding: 10px 20px;
+            border: 1px solid #0056b3;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+
+        .payment-btn.active {
+            background: linear-gradient(135deg, #0056b3 0%, #007bff 100%);
+            color: white;
+            border: none;
+        }
+
+        .planCards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .planCard {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 20px;
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .planCard h3 {
+            margin-bottom: 30px;
+        }
+
+        .plan {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .plan h1 {
+            font-size: 2.5rem;
+            color: #0056b3;
+        }
+
+        #bestSeller {
+            border: 2px solid #0056b3;
+            transform: scale(1.05);
+        }
+
+        #bestSellerTag {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: linear-gradient(135deg, #0056b3 0%, #007bff 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .discount {
+            color: #f75858;
+            font-weight: bold;
+            height: 20px;
         }
 
         /* Learning journey section styling */
@@ -95,40 +406,53 @@
             text-align: left;
             margin-bottom: 50px;
         }
+
+        @media screen and (max-width: 768px) {
+            .journeyCard {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
         .journeyNums {
             position: absolute;
             top: -30px;
-            left: -30px;
-            width: 80px;
-            height: 80px;
-            background: #2ecc71;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            background: #0056b3;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: bold;
-            z-index: 1;
+            transform: translateX(-50%);
         }
         .journeyCard h3 {
-            color: #2c3e50;
-            margin-bottom: 15px;
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            right: 20px;
+            margin: 0;
             font-size: 1.3rem;
         }
 
+        .journeyCard p {
+            margin-top: 5px;
+        }
         /* Success of students section styling */
         #studentSection {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             min-height: 600px;
         }
 
         .studentGrid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 40px;
+            justify-items: center;
         }
 
         .studentStory {
@@ -138,11 +462,8 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
             min-height: 350px;
-        }
-
-
-        .studentStory:hover {
-            transform: scale(1.05);
+            display: flex;
+            flex-direction: column;
         }
 
         .studentInfo {
@@ -154,6 +475,7 @@
 
         .studentImg {
             height: 60px;
+            width: 60px;
             object-fit: cover;
             border-radius: 50%;
         }
@@ -161,10 +483,10 @@
         .studentStats {
             display: flex;
             justify-content: space-between;
-            margin-top: 20px;
             padding-top: 20px;
             border-top: 2px solid #dee2e6;
             align-items: flex-end;
+            margin-top: auto;
         }
 
         .stat {
@@ -180,60 +502,57 @@
         .studentStatLabel {
             font-size: 0.9rem;
             color: #6c757d;
-        }
-
-        /* CTA section styling */
-        .ctaSection {
-            background-image: url('background.png');
-            background-size: cover;
-            background-position: center;
-            min-height: 100vh;
+        }        /* Success statistics section */        .successContainer {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .successItem {
             text-align: center;
-            padding: 2rem;
-            color: white;
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
         }
 
-        .ctaTitle {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        .successIcon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+        }
+        
+        .successNum {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #0056b3;
+            margin: 10px 0;
         }
 
-        .ctaSubtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        .successLabel {
+            color: #666;
+            font-size: 1.1rem;
+            font-weight: 500;
         }
 
-        .ctaButton {
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+        .section2 {
+            background-color: #f8f9fa;
         }
-
-        .ctaButton:hover {
-            background-color: #0056b3;
+        .section1 {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
 
         /* FAQ section styling */
         #faqSection {
-            padding: 20px 0;
-            height: 40vh;
+            height: 45vh;
         }
         
         .faqItem {
-            background: white;
             border-bottom: 1px solid #ddd;
             cursor: pointer;
+            user-select: none;
         }
 
         .faqItem h3 {
@@ -310,8 +629,10 @@
         }
 
         .footerColumn {
+            display: flex;
             flex: 1;
             margin-right: 40px;
+            flex-direction: column;
         }
         
         .footerColumn:last-child {
@@ -324,188 +645,43 @@
         }
         
         .footerColumn p {
-              margin-bottom: 10px;
-              color: #ccc;
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .footerColumn a {
+            margin-bottom: 10px;
+            color: #ffffff;
+            text-decoration: underline;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .footerColumn a:hover {
+            color: #cccccc;
         }
 
         .footerBottom {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              padding-top: 20px;
-              border-top: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
         }
 
-        .footerBottom img {
+        .footerSocials img {
             width: 30px;
             filter: invert(100%) sepia(4%) saturate(7500%) hue-rotate(264deg) brightness(109%) contrast(100%);
+            transition: all 0.3s ease;
         }
 
-        .footerBottom img:hover {
-            width: 30px;
-            filter: invert(100%) sepia(4%) saturate(7500%) hue-rotate(264deg) brightness(109%) contrast(100%);
+        .footerSocials img:hover {
+            transform: translateY(-5px);
         }
         
         .footerSocials a {
-            color: white;
             margin-left: 20px;
-            text-decoration: none;
-            font-size: 20px;
-        }
-
-        /* Teachers' information section styling */
-        .teacherContainer {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-            overflow: hidden;
-        }
-
-        .teacherCards {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        
-        .teacherCard {
-            flex: 0 0 calc(33.333% - 20px);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin: 10px;
-            min-width: calc(33.333% - 20px);
-        }
-
-        .teacherImg {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin-bottom: 15px;
-            object-fit: cover;
-        }
-
-        .teacherInfo {
-            width: 100%;
-        }
-
-        .teacherInfo h3 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 1.4rem;
-        }
-
-
-        .teacherInfo p {
-            margin: 5px 0;
-            color: #666;
-        }
-
-        .specialty {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .specialty img {
-            width: 40px;
-            height: 40px;
-        }
-
-        /* Success statistics section */
-        .successContainer {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .successItem {
-            text-align: center;
-            flex: 1;
-            min-width: 200px;
-            padding: 20px;
-        }
-
-        .successIcon {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 15px;
-        }
-        
-        .successNum {
-            font-size: 2.8rem;
-            font-weight: bold;
-            color: #0056b3;
-            margin: 10px 0;
-        }
-
-        .successLabel {
-            color: #666;
-            font-size: 1.1rem;
-            font-weight: 500;
-        }
-
-        /* Plan prices section */
-        .planCards {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .planCard {
-            flex: 1;
-            min-width: 280px;
-            text-align: center;
-            padding: 40px 20px;
-            border-radius: 20px;
-            background: linear-gradient(145deg, #ffffff, #f0f0f0);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            position: relative;
-        }
-
-        .planCard h3 {
-            margin-bottom: 30px;
-        }
-
-        .plan {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            gap: 8px;
-        }
-
-        .plan h1 {
-            font-size: 2.5rem;
-            color: #0056b3;
-        }
-
-        #bestSeller {
-            border: 2px solid #0056b3;
-            transform: scale(1.05);
-        }
-
-        #bestSellerTag {
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            background: #0056b3;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
+            text-decoration: none; 
         }
     </style>
 </head>
@@ -522,16 +698,37 @@
     </nav>
     
     <!-- CTA section -->
-    <section class="ctaSection">
+    <section id="ctaSection" class="section2">
         <div class="container">
-            <h1 class="ctaTitle">Mokykis kalbų su profesionalais</h1>
-            <p class="ctaSubtitle">Atrask naujus horizontus su Languify</p>
-            <button class="ctaButton">Pradėti mokytis</button>
+            <div class="ctaContent">
+                <div class="ctaText">
+                    <h1 class="ctaTitle">Mokykis kalbų su profesionalais</h1>
+                    <p class="ctaSubtitle">Atrask naujus horizontus su Languify</p>
+                    <button class="ctaButton">
+                        <span>Pradėti mokytis</span>
+                        <img src="../Assets/Photographic/Icons/arrow_forward.svg" alt="arrow" class="arrowIcon">
+                    </button>
+                    <div class="ctaSocials">
+                            <a href="https://www.facebook.com" target="_blank">
+                                <img src="../Assets/Photographic/Icons/facebook-logo.svg">
+                            </a>
+                            <a href="https://www.instagram.com" target="_blank">
+                                <img src="../Assets/Photographic/Icons/instagram-logo.svg">
+                            </a>
+                            <a href="https://www.linkedin.com" target="_blank">
+                                <img src="../Assets/Photographic/Icons/linkedin-logo.svg">
+                            </a>
+                        </div>
+                </div>
+                <div class="ctaImageContainer">
+                    <img src="background.png" alt="Learning languages" class="ctaImage">
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Teachers' information section -->
-    <section id="teacherSection">
+    <section id="teacherSection" class="section2">
         <div class="container">
             <h2 class="sectionTitle">Mūsų Mokytojai</h2>
             <div class="teacherContainer">
@@ -618,16 +815,22 @@
     </section>
 
     <!-- Plan prices section -->
-    <section id="planSection" style="background-color: #f8f9fa;">
+    <section id="planSection" class="section1">
         <div class="container">
             <h2 class="sectionTitle">Planų kainos</h2>
+            <div class="payment-buttons">
+                <button class="payment-btn active" onclick="changePeriod('month')">Mėnesiui</button>
+                <button class="payment-btn" onclick="changePeriod('halfYear')">Pusmečiui (-10%)</button>
+                <button class="payment-btn" onclick="changePeriod('year')">Metams (-20%)</button>
+            </div>
             <div class="planCards">
                 <div class="planCard">
                     <h3>Pradedančiųjų kursas</h3>
                     <div class="plan">
-                        <h1>40€</h1>
-                        <p>/mėn</p>
+                        <h1 id="basic-price">40€</h1>
+                        <p id="basic-period">/mėn</p>
                     </div>
+                    <div class="discount" id="basic-discount"></div>
                     <ul style="list-style: none; margin: 20px 0;">
                         <li>✓ 8 pamokos per mėnesį</li>
                         <li>✓ Mokomoji medžiaga</li>
@@ -640,9 +843,10 @@
                     </div>
                     <h3>Vidutinis lygis</h3>
                     <div class="plan">
-                        <h1>40€</h1>
-                        <p>/mėn</p>
+                        <h1 id="medium-price">40€</h1>
+                        <p id="medium-period">/mėn</p>
                     </div>
+                    <div class="discount" id="medium-discount"></div>
                     <ul style="list-style: none; margin: 20px 0;">
                         <li>✓ 12 pamokų per mėnesį</li>
                         <li>✓ Papildoma praktika</li>
@@ -652,9 +856,10 @@
                 <div class="planCard">
                     <h3>Pažengusiųjų kursas</h3>
                     <div class="plan">
-                        <h1>40€</h1>
-                        <p>/mėn</p>
+                        <h1 id="advanced-price">40€</h1>
+                        <p id="advanced-period">/mėn</p>
                     </div>
+                    <div class="discount" id="advanced-discount"></div>
                     <ul style="list-style: none; margin: 20px 0;">
                         <li>✓ 16 pamokų per mėnesį</li>
                         <li>✓ Individualus planas</li>
@@ -666,9 +871,9 @@
     </section>
 
     <!-- Learning journey section -->
-    <section id="journeySection" style="height: 950px;">
+    <section id="journeySection" class="section2">
         <div class="container">
-            <h2 class="sectionTitle">Jūsų Mokymosi Kelionė</h2>
+            <h2 class="sectionTitle" style="margin-bottom: 60px;">Jūsų Mokymosi Kelionė</h2>
             <div class="journeyCards">
                 <div class="journeyCard">
                     <div class="journeyNums">1</div>
@@ -705,15 +910,15 @@
     </section>
     
     <!-- Success of students section -->
-    <section id="studentSection">
+    <section id="studentSection" class="section1">
         <div class="container">
             <h2 class="sectionTitle">Mokinių sėkmės Istorijos</h2>
             <div class="studentGrid">
                 <div class="studentStory">
                     <div class="studentInfo">
-                        <img src="https://via.placeholder.com/60" class="studentImg" alt="Laura">
+                        <img src="../Assets/Photographic/Stock-images/student-laura.webp" class="studentImg" alt="Laura">
                         <div>
-                            <h3>Laura M.</h3>
+                            <h3>Laura</h3>
                             <p>B2 → C1 per 6 mėnesius</p>
                         </div>
                     </div>
@@ -737,7 +942,7 @@
 
                 <div class="studentStory">
                     <div class="studentInfo">
-                        <img src="https://via.placeholder.com/60" class="studentImg" alt="Tomas">
+                        <img src="../Assets/Photographic/Stock-images/student-tomas.avif" class="studentImg" alt="Tomas">
                         <div>
                             <h3>Tomas</h3>
                             <p>A1 → B1 per 8 mėnesius</p>
@@ -763,7 +968,7 @@
 
                 <div class="studentStory">
                     <div class="studentInfo">
-                        <img src="https://via.placeholder.com/60" class="studentImg" alt="Ieva">
+                        <img src="../Assets/Photographic/Stock-images/student-ieva.avif" class="studentImg" alt="Ieva">
                         <div>
                             <h3>Ieva</h3>
                             <p>B1 → C1 per 12 mėnesių</p>
@@ -790,7 +995,7 @@
     </section>
 
     <!-- Success statistics section -->
-    <section id="successSection" style="background-color: #ffffff;"
+    <section id="successSection" class="section2";
         <div class="container">
             <h2 class="sectionTitle" style="text-align: center; margin-bottom: 40px;">Mūsų sėkmės istorija</h2>
             <div class="successContainer">
@@ -819,7 +1024,7 @@
     </section>
           
     <!-- FAQ section -->
-    <section id="faqSection" style="background-color: #f8f9fa;">
+    <section id="faqSection" class="section1">
         <div class="container">
             <h2 class="sectionTitle">DUK: Dažniausiai Užduodami Klausimai</h2>
             <div id="faqQuestions">
@@ -838,15 +1043,15 @@
             </div>
         </div>
     </section>
-
+    
     <!-- Footer section -->
     <section class="footer">
         <div class="container">
             <div class="footerContent">
                 <div class="footerColumn">
                     <h3>Kontaktai</h3>
-                    <p>Email: info@kalbuakademija.lt</p>
-                    <p>Tel: +370 600 00000</p>
+                    <a href="mailto:info@kalbuakademija.lt">Email: info@kalbuakademija.lt</a>
+                    <a href="tel:+37000000000">Tel: +370 000 00000</a>
                     <p>Darbo laikas: I-V 9:00-18:00</p>
                 </div>
                 <div class="footerColumn">
@@ -860,16 +1065,17 @@
                     <div class="copyright">
                         <p>© 2024 Kalbų Akademija. Visos teisės saugomos.</p>
                     </div>
-                    <div class="footerSocials">
-                    <a href="#">
-                        <img src="../Assets/Photographic/Icons/facebook-logo.svg">
-                    </a>
-                    <a href="#">
-                        <img src="../Assets/Photographic/Icons/instagram-logo.svg">
-                    </a>
-                    <a href="#">
-                        <img src="../Assets/Photographic/Icons/linkedin-logo.svg">
-                    </a>
+                        <div class="footerSocials">
+                            <a href="https://www.facebook.com" target="_blank">
+                                <img src="../Assets/Photographic/Icons/facebook-logo.svg">
+                            </a>
+                            <a href="https://www.instagram.com" target="_blank">
+                                <img src="../Assets/Photographic/Icons/instagram-logo.svg">
+                            </a>
+                            <a href="https://www.linkedin.com" target="_blank">
+                                <img src="../Assets/Photographic/Icons/linkedin-logo.svg">
+                            </a>
+                        </div>
                 </div>
             </div>
         </div>
