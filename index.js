@@ -66,11 +66,11 @@ function changePeriod(period) {
     } else if (period === 'halfYear') {
         price = Math.round(basePrice * 6 * 0.9 / 6);
         periodText = '/mėn';
-        discount = 'Sutaupote 10%';
+        discount = 'Save 10%';
     } else if (period === 'year') {
         price = Math.round(basePrice * 12 * 0.8 / 12);
         periodText = '/mėn';
-        discount = 'Sutaupote 20%';
+        discount = 'Save 20%';
     }
     
     // Update prices and periods for all plans
