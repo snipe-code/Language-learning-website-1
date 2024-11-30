@@ -180,21 +180,6 @@
             transform: scale(1.05);
         }
 
-        @media (max-width: 768px) {
-            .ctaContent {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .ctaText {
-                text-align: center;
-            }
-
-            .ctaButton {
-                margin: 0 auto;
-            }
-        }
-
         .ctaSocials img {
             width: 30px;
             margin-top: 15px;
@@ -428,13 +413,6 @@
             margin-bottom: 50px;
         }
 
-        @media screen and (max-width: 768px) {
-            .journeyCard {
-                width: 200px;
-                height: 200px;
-            }
-        }
-
         .journeyNums {
             position: absolute;
             top: -30px;
@@ -523,7 +501,10 @@
         .studentStatLabel {
             font-size: 0.9rem;
             color: #6c757d;
-        }        /* Success statistics section */        .successContainer {
+        }
+        
+        /* Success statistics section */
+        .successContainer {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
@@ -707,6 +688,28 @@
             margin-left: 20px;
             text-decoration: none; 
         }
+
+        /* Applying changes when the screen size is smaller */
+        @media (max-width: 768px) {
+            .ctaContent {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .ctaText {
+                text-align: center;
+            }
+
+            .ctaButton {
+                margin: 0 auto;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            .journeyCard {
+                width: 200px;
+                height: 200px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -714,9 +717,10 @@
     <nav>
         <h1>Kalbistai</h1>
         <div>
+            <a href="#ctaSection">Homepage</a>
             <a href="#teacherSection">Teachers</a>
-            <a href="#planSection">Prices</a>
-            <a href="#journeySection">Courses</a>
+            <a href="#planSection">Courses</a>
+            <a href="#journeySection">Journey</a>
             <a href="#faqSection">FAQ</a>
         </div>
     </nav>
@@ -728,8 +732,8 @@
                 <div class="ctaText">
                     <h1 class="ctaTitle">Learn languages with professionals</h1>
                     <p class="ctaSubtitle">Discover new horizons with Kalbistai</p>
-                    <button class="ctaButton">
-                        <span>Start learning</span>
+                    <button class="ctaButton" onclick="window.location.href='#planSection'">
+                        <span>Check plans</span>
                         <img src="../Assets/Photographic/Icons/arrow_forward.svg" alt="arrow" class="arrowIcon">
                     </button>
                     <div class="ctaSocials">
@@ -1101,7 +1105,7 @@
                 <div class="footerColumn">
                     <h3>Contacts</h3>
                     <span>
-                        <a href="mailto:info@kalbistai.lt">Email: info[at]kalbistai.lt</a>
+                        <a href="mailto:info@kalbistai.lt">Email: info@kalbistai.lt</a>
                     </span>
                     <span>
                         <a href="tel:+37000000000">Tel: +370 000 00000</a>
