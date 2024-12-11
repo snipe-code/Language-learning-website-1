@@ -46,17 +46,15 @@ document.querySelectorAll('.faqItem').forEach(item => {
     });
 });
 
-// PLAN PRICES CHANGE
+// PLAN PRICES SYSTEM
 function changePeriod(period) {
     const basePrice = 40;
     let price, periodText, discount;
     
-    // Remove active class from all buttons
     document.querySelectorAll('.payment-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     
-    // Add active class to clicked button
     event.target.classList.add('active');
     
     if (period === 'month') {
@@ -73,10 +71,37 @@ function changePeriod(period) {
         discount = 'Save 20%';
     }
     
-    // Update prices and periods for all plans
     ['basic', 'medium', 'advanced'].forEach(plan => {
         document.getElementById(`${plan}-price`).textContent = price + '€';
         document.getElementById(`${plan}-period`).textContent = periodText;
         document.getElementById(`${plan}-discount`).textContent = discount;
     });
 }
+
+// STATISTICS ANIMATION 
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const numbers = document.querySelectorAll('.successNum');
+            numbers.forEach(num => {
+                const target = parseFloat(num.getAttribute('dataTarget'));
+                const duration = 1500;
+                const steps = 50;
+                const increment = target / steps;
+                let current = 0;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        num.textContent = target + (num.getAttribute('dataTarget') === '4.9' ? '' : '+');
+                        clearInterval(timer);
+                    } else {
+                        num.textContent = current.toFixed(1) + (num.getAttribute('dataTarget') === '4.9' ? '' : '+');
+                    }
+                }, duration / steps);
+            });
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+observer.observe(document.querySelector('#successSection'));
