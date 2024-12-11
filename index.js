@@ -48,8 +48,12 @@ document.querySelectorAll('.faqItem').forEach(item => {
 
 // PLAN PRICES SYSTEM
 function changePeriod(period) {
-    const basePrice = 40;
-    let price, periodText, discount;
+    const basePrices = {
+        basic: 25,
+        medium: 40,
+        advanced: 60
+    };
+    let periodText, discount;
     
     document.querySelectorAll('.payment-btn').forEach(btn => {
         btn.classList.remove('active');
@@ -58,26 +62,28 @@ function changePeriod(period) {
     event.target.classList.add('active');
     
     if (period === 'month') {
-        price = basePrice;
-        periodText = '/mėn';
+        periodText = '/month';
         discount = '';
     } else if (period === 'halfYear') {
-        price = Math.round(basePrice * 6 * 0.9 / 6);
-        periodText = '/mėn';
+        periodText = '/month';
         discount = 'Save 10%';
     } else if (period === 'year') {
-        price = Math.round(basePrice * 12 * 0.8 / 12);
-        periodText = '/mėn';
+        periodText = '/month';
         discount = 'Save 20%';
     }
     
     ['basic', 'medium', 'advanced'].forEach(plan => {
+        let price = basePrices[plan];
+        if (period === 'halfYear') {
+            price = Math.round(price * 6 * 0.9 / 6);
+        } else if (period === 'year') {
+            price = Math.round(price * 12 * 0.8 / 12);
+        }
         document.getElementById(`${plan}-price`).textContent = price + '€';
         document.getElementById(`${plan}-period`).textContent = periodText;
         document.getElementById(`${plan}-discount`).textContent = discount;
     });
 }
-
 // STATISTICS ANIMATION 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
