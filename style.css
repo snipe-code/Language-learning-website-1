@@ -41,7 +41,6 @@
     
     .navLinks {
         display: flex;
-        gap: 2rem;
     }
     
     .burgerMenu {
@@ -98,10 +97,6 @@
         border-radius: 15px;
     }
     
-    nav a:last-child {
-        margin-right: 30px;
-    }
-    
     nav a::before {
         content: '';
         position: absolute;
@@ -123,9 +118,9 @@
     nav a:hover {
         color: #0056b3;
     }
-    
-            /* CTA section styling */
-            #ctaSection .container {
+
+    /* CTA section styling */
+    #ctaSection .container {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -739,6 +734,13 @@
             margin-bottom: 30px;
         }
     
+        nav a {
+            width: 100%;
+            text-align: center;
+            background: white;
+            border-radius: 0;
+        }
+
         .navLinks {
             display: none;
             position: fixed;
