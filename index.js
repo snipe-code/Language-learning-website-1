@@ -111,3 +111,11 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 
 observer.observe(document.querySelector('#successSection'));
+
+// Burger menu
+const burgerMenu = document.querySelector('.burgerMenu');
+const navLinks = document.querySelector('.navLinks');
+
+burgerMenu.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
